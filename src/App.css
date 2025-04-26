@@ -1,6 +1,7 @@
 .app-container {
   font-family: 'Segoe UI', Arial, sans-serif;
-  max-width: 900px;
+  max-width: 1200px;
+  width: 900px;
   margin: 0 auto;
   padding: 2rem;
   background: #fafbfc;
@@ -35,6 +36,16 @@ h1, h2 {
   display: inline-block;
   background: #e3f2fd;
   color: #1976d2;
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  font-size: 0.95em;
+  margin-top: 0.3em;
+}
+
+.role {
+  display: inline-block;
+  background: #eeeeee;
+  color: #3f3f3f;
   padding: 0.2em 0.6em;
   border-radius: 4px;
   font-size: 0.95em;

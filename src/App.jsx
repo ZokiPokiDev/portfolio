@@ -1,19 +1,21 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ProjectPage from './pages/ProjectPage';
 import './App.css';
-import Hero from './sections/Hero';
-import About from './sections/About';
-import Projects from './sections/Projects';
-import TechStack from './sections/TechStack';
-import Contact from './sections/Contact';
+import './components/Gallery.css';
+import './components/LightboxModal.css';
+import './components/Collage.css';
 
 function App() {
   return (
-    <div className="app-container">
-      <Hero />
-      <About />
-      <TechStack />
-      <Projects />
-      <Contact />
-    </div>
+    <BrowserRouter>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects/:id" element={<ProjectPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

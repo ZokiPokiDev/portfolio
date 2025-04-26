@@ -46,6 +46,7 @@ import gitLogo from '../assets/git.svg';
 import githubLogo from '../assets/github.svg';
 import codeiumLogo from '../assets/codeium.svg';
 import reactNativeLogo from '../assets/react-native.webp';
+import muiLogo from '../assets/mui.svg';
 
 const techStack = [
   { name: 'React.js', logo: reactLogo },
@@ -96,6 +97,7 @@ const techStack = [
   { name: 'GitHub', logo: githubLogo },
   { name: 'Codeium', logo: codeiumLogo },
   { name: 'React Native', logo: reactNativeLogo },
+  { name: 'MUI', logo: muiLogo },
 ];
 
 const TechStack = () => (
