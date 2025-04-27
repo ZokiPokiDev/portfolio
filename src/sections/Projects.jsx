@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import { projects } from '../base/projects';
 
 const Projects = () => (
-    <section className="projects">
+    <section id="projects" className="projects">
         <h2>Projects</h2>
         <ul>
             {projects.map((proj, idx) => (
-                <div className="box-card" key={idx} style={{ marginBottom: '1em' }}>
+                <div id={proj.id} className="box-card" key={idx} style={{ marginBottom: '1em' }}>
                     <li>
                         <Link to={`/projects/${proj.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                             {proj.image && (

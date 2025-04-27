@@ -607,8 +607,8 @@ export const services = [
 ];
 
 const Services = () => (
-  <section className="services box-card">
-    <h2>Services</h2>
+  <section id="services" className="services box-card">
+    <h3>Services</h3>
     <ul>
       {services.map((service, idx) => (
         <li key={idx}>

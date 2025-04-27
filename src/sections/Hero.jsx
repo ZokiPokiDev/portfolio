@@ -72,7 +72,7 @@ const Hero = () => {
   const descTyping = useTypingLoop(descriptions, descConfig);
 
   return (
-    <section className="hero">
+    <section id="hero" className="hero">
       <h1>Professional Software Solutions</h1>
 
       <h2 style={{ minHeight: '2.5em', fontFamily: 'monospace', fontWeight: 400 }}>

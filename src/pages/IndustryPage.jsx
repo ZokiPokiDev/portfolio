@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { industries } from "../sections/Industries";
 import { useParams } from "react-router-dom";
+import './IndustryPage.css';
 
 const IndustryPage = () => {
     const { id } = useParams();
     const industry = industries.find(industry => industry.id === id)
 
     return (
-        <div>
+        <div className="industry-page">
             <Link className="topbar-link" to="/" style={{ color: '#1a73e8', textDecoration: 'none', fontWeight: 'bold' }}>
                 ← Back to Portfolio
             </Link>

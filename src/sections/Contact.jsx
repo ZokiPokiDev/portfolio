@@ -1,5 +1,5 @@
 const Contact = () => (
-    <section className="contact">
+    <section id="contact" className="contact">
       <h2>Contact</h2>
       <p>
         Email: <a href="mailto:zoran.panev@gmail.com">panev.zoran.te@gmail.com</a><br />

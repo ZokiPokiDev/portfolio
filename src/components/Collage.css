@@ -4,9 +4,9 @@
   max-width: 100%;
   height: 220px;
   margin: 2em auto 1em auto;
-  background: #f2f5fa;
+  background: var(--collage-bg);
   border-radius: 18px;
-  box-shadow: 0 2px 12px rgba(60,60,60,0.08);
+  box-shadow: var(--shadow-hover);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -23,7 +23,7 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(60,60,60,0.13);
   transition: transform 0.2s, box-shadow 0.2s;
-  border: 4px solid #fff;
+  border: 4px solid var(--white-border);
 }
 
 /* For 3 images */

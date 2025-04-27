@@ -143,10 +143,10 @@ export const projects = [
         name: "WHMCS Hosting Platform",
         description: "Hosting automation and management platform.",
         role: "Lead engineer & architect",
-        tech: "[Lead engineer & architect]",
+        tech: "WHMCS API, Laravel, Nest.js, MariaDB, Redis, React.js, MUI",
         image: whmcsLogo,
         gallery: [whmcs1, whmcs2, whmcs3, whmcs4],
-        impact: "Led the mobile team and delivered a seamless dealer experience.",
+        impact: "Build SaaS and platform products for Hosting company.",
     },
     {
         id: "ecommerce",

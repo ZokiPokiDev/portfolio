@@ -4,18 +4,10 @@
   width: 900px;
   margin: 0 auto;
   padding: 2rem;
-  background: #fafbfc;
-  color: #222;
-}
-
-section {
-  margin-bottom: 3rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #eaeaea;
-}
-
-h1, h2 {
-  color: #1a73e8;
+  background: var(--container-bg);
+  color: var(--text);
+  position: relative;
+  z-index: 1;
 }
 
 .hero {
@@ -55,6 +47,7 @@ h1, h2 {
 .typing-cursor {
   animation: blink 1s steps(2, start) infinite;
 }
+
 @keyframes blink {
   to { opacity: 0; }
 }
@@ -64,13 +57,13 @@ h1, h2 {
   top: 0;
   left: 0;
   width: 100%;
-  background: #fff;
+  background: var(--primary-bg);
   z-index: 1000;
   padding: 1em;
 }
 
 .line-separator {
-  border: 1px solid #eaeaea;
+  border: 1px solid var(--default-border);
 }
 
 .spacer {
@@ -83,34 +76,33 @@ h1, h2 {
 
 .box-card {
   margin: 1.5em 0;
-  background: #f3f5f7;
+  background: var(--card-bg);
+  color: var(--text);
   border-radius: 12px;
+  border: 1px solid var(--card-border);
   padding: 1em 2em;
-  box-shadow: 3px 5px 8px rgba(60,60,60,0.3);
+  box-shadow: var(--shadow);
+  transition: background 0.2s, color 0.2s, border 0.2s;
 }
 
 .box-card-lighter {
   margin: 1em 0;
-  background: #fafafa;
+  background: var(--card-bg);
+  color: var(--text);
   border-radius: 12px;
+  border: 1px solid var(--card-border);
   padding: 1em 2em;
-  box-shadow: 0 2px 8px rgba(60,60,60,0.05);
+  box-shadow: var(--shadow);
+  transition: background 0.2s, color 0.2s, border 0.2s;
 }
 
-.industries ul, .locations ul, .services ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em 1.5em;
-  list-style: none;
-  padding: 0;
-  margin: 0.5em 0 0 0;
-}
-
-.industries li, .locations li, .services li {
-  font-size: 1.1em;
-  color: #3f3f3f;
-  background: #e7f0fd;
-  border-radius: 6px;
-  border: 1px solid #1f6cd8;
-  padding: 0.4em 1em;
+.card {
+  margin: 1em 0;
+  background: var(--card-bg);
+  color: var(--text);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  padding: 1em 2em;
+  box-shadow: var(--shadow);
+  transition: background 0.2s, color 0.2s, border 0.2s;
 }

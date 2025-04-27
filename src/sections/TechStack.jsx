@@ -64,6 +64,8 @@ import snykLogo from '../assets/snyk.svg';
 import apachecordovaLogo from '../assets/apachecordova.svg';
 import dynatraceLogo from '../assets/dynatrace.svg';
 import stripeLogo from '../assets/stripe.svg';
+import bootstrapLogo from '../assets/bootstrap.svg';
+import firebaseLogo from '../assets/firebase.svg';
 
 const groupedTechStack = {
   "Full-Stack": [
@@ -106,6 +108,8 @@ const groupedTechStack = {
     { name: 'ReactiveX', logo: reactivexLogo },
     { name: 'Leaflet', logo: leafletLogo },
     { name: 'Stripe', logo: stripeLogo },
+    { name: 'Bootstrap', logo: bootstrapLogo },
+    { name: 'Firebase', logo: firebaseLogo },
   ],
   "DevOps": [
     { name: 'Docker', logo: dockerLogo },
@@ -144,7 +148,7 @@ const groupedTechStack = {
 };
 
 const TechStack = () => (
-  <section className="tech-stack">
+  <section id="tech-stack" className="tech-stack">
     <h2>Tech Stack</h2>
     {Object.entries(groupedTechStack).map(([group, techs]) => (
       techs.length > 0 && (

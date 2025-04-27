@@ -72,10 +72,12 @@ const ProjectPage = () => {
 
     return (
         <div className="project-page">
-            <Link to="/" style={{ color: '#1a73e8', display: 'inline-block', marginBottom: '1em' }}>
+            <Link className="topbar-link" to="/" style={{ color: '#1a73e8', textDecoration: 'none', fontWeight: 'bold' }}>
                 ← Back to Portfolio
             </Link>
-            <section>
+            <div className="spacer"></div>
+
+            <section id={project.id} className="project-section">
                 <h2>{project.name}</h2>
                 {project.image && (
                     <img src={project.image} alt={project.name} style={{ width: '120px', margin: '1em 0' }} />

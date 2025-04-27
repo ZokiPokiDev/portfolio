@@ -256,8 +256,8 @@ export const industries = [
 ];
 
 const Industries = () => (
-    <section className="industries box-card">
-        <h2>Industries</h2>
+    <section id="industries" className="industries box-card">
+        <h3>Industries</h3>
         <ul>
             {industries.map((industry, idx) => (
                 <li key={idx}>

@@ -1,0 +1,46 @@
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+.dark-theme {
+    --bg: #494d5a;
+    --text: #e4e6eb;
+    --container-bg: #313d46;
+    --card-bg: #333a46;
+    --card-border: #31343a;
+    --default-border: #31343a;
+    --primary: #8ab4f8;
+    --primary-bg: #313d46;
+    --secondary: #23272f;
+    --input-bg: #23272f;
+    --input-border: #444950;
+    --modal-bg: #23272f;
+    --collage-bg: #69757d;
+    --modal-overlay: rgba(0,0,0,0.8);
+    --shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.theme-switch {
+    position: fixed;
+    top: 1.2em;
+    right: 1.2em;
+    z-index: 2000;
+    background: var(--card-bg);
+    color: var(--text);
+    border: none;
+    border-radius: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    font-size: 1.3em;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+  }
+  
+  .theme-switch:focus {
+    outline: 2px solid var(--primary);
+  }

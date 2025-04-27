@@ -11,16 +11,28 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-  cursor: pointer;
+  /* Light Theme Colors */
+  --bg: #fff;
+  --text: #222;
+  --card-bg: #fafafa;
+  --container-bg: #fafbfc;
+  --card-border: #eaeaea;
+  --white-border: #fff;
+  --primary: #1a73e8;
+  --primary-bg: #f2f5fa;
+  --secondary: #e7f0fd;
+  --input-bg: #f8f9fa;
+  --input-border: #d1d5db;
+  --default-border: #eaeaea;
+  --arrow: #e3f2fd;
+  --arrow-bg: rgba(40, 40, 40, 0.1);
+  --modal-bg: #fafbfc;
+  --collage-bg: #f2f5fa;
+  --modal-overlay: rgba(0, 0, 0, 0.4);
+  --shadow: 0 2px 8px rgba(60, 60, 60, 0.05);
+  --shadow-hover: 0 2px 8px rgba(60, 60, 60, 0.08);
+  --shadow-hover-darker: 0 2px 16px rgba(60, 60, 60, 0.18);
 }
 
 body {
@@ -29,6 +41,25 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
+}
+
+h1,
+h2 {
+  color: #1a73e8;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+  cursor: pointer;
 }
 
 h1 {
@@ -47,23 +78,48 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+section {
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eaeaea;
+}
+
+input,
+textarea,
+select {
+  background: var(--input-bg);
+  color: var(--text);
+  border: 1px solid var(--input-border);
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+/* Tablet (≥ 600px) */
+@media (min-width: 600px) {
+  body {
+    font-size: 1.05rem;
   }
-  a:hover {
-    color: #747bff;
+  .container {
+    padding: 0 2rem;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+/* Desktop (≥ 900px) */
+@media (min-width: 900px) {
+  body {
+    font-size: 1.1rem;
+  }
+  .container {
+    max-width: 900px;
+    padding: 0 3rem;
   }
 }

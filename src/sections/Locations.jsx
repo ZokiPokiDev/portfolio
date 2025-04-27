@@ -10,7 +10,7 @@ export const locations = [
 ];
 
 const Locations = () => (
-  <section className="locations">
+  <section id="locations" className="locations">
     <h2>Locations</h2>
     <ul>
       {locations.map((loc, idx) => (
