@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 const titles = [
-  "Full Stack Engineer",
-  "AI/LLM Engineer & Architect",
-  "Lead Software Engineer & Solution Architect",
-  "AI Platform Specialist",
-  "SaaS & API Integration Expert",
+  "Full Stack Engineering",
+  "AI/LLM Engineering & Architecture",
+  "Lead Software Engineering & Solution Architecture",
+  "AI Platform Specialization",
+  "SaaS & API Integration Expertise",
 ];
 
 const descriptions = [
@@ -19,13 +19,13 @@ const descriptions = [
 const titleConfig = {
   TYPING_SPEED: 15,
   ERASING_SPEED: 15,
-  DISPLAY_DELAY: 8800,
+  DISPLAY_DELAY: 10500,
   SWITCH_DELAY: 100,
 };
 
 const descConfig = {
   TYPING_SPEED: 20,
-  ERASING_SPEED: 20,
+  ERASING_SPEED: 15,
   DISPLAY_DELAY: 5000,
   SWITCH_DELAY: 60,
 };
@@ -73,11 +73,13 @@ const Hero = () => {
 
   return (
     <section className="hero">
-      <h1>Hi, I'm Zoran Panev</h1>
+      <h1>Professional Software Solutions</h1>
+
       <h2 style={{ minHeight: '2.5em', fontFamily: 'monospace', fontWeight: 400 }}>
         {titleTyping.displayed}
         <span className="typing-cursor" style={{ opacity: titleTyping.typing ? 1 : 0 }}>|</span>
       </h2>
+      
       <p style={{ minHeight: '3em', fontFamily: 'monospace', fontSize: '1.2em' }}>
         {descTyping.displayed}
         <span className="typing-cursor" style={{ opacity: descTyping.typing ? 1 : 0 }}>|</span>

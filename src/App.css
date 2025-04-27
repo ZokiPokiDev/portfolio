@@ -58,3 +58,59 @@ h1, h2 {
 @keyframes blink {
   to { opacity: 0; }
 }
+
+.topbar-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  padding: 1em;
+}
+
+.line-separator {
+  border: 1px solid #eaeaea;
+}
+
+.spacer {
+  height: 1.5rem;
+}
+
+.used-from {
+  text-align: center;
+}
+
+.box-card {
+  margin: 1.5em 0;
+  background: #f3f5f7;
+  border-radius: 12px;
+  padding: 1em 2em;
+  box-shadow: 3px 5px 8px rgba(60,60,60,0.3);
+}
+
+.box-card-lighter {
+  margin: 1em 0;
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 1em 2em;
+  box-shadow: 0 2px 8px rgba(60,60,60,0.05);
+}
+
+.industries ul, .locations ul, .services ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em 1.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0.5em 0 0 0;
+}
+
+.industries li, .locations li, .services li {
+  font-size: 1.1em;
+  color: #3f3f3f;
+  background: #e7f0fd;
+  border-radius: 6px;
+  border: 1px solid #1f6cd8;
+  padding: 0.4em 1em;
+}

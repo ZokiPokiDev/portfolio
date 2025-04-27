@@ -3,13 +3,79 @@ import ktm1 from '../assets/ktm1.png';
 import ktm2 from '../assets/ktm2.png';
 import ktm3 from '../assets/ktm3.png';
 import ktm4 from '../assets/ktm4.png';
+
 import volkswagenLogo from '../assets/volkswagen.svg';
+import vw1 from '../assets/vw1.jpg';
+import vw2 from '../assets/vw2.jpg';
+import vw3 from '../assets/vw3.jpg';
+import vw4 from '../assets/vw4.png';
+
 import redbullLogo from '../assets/redbull.svg';
+import rbs1 from '../assets/rbs1.jpeg';
+import rbs2 from '../assets/rbs2.jpg';
+import rbs3 from '../assets/rbs3.jpg';
+import rbs4 from '../assets/rbs4.png';
+import rbs5 from '../assets/rbs5.png';
+
 import daznLogo from '../assets/dazn.svg';
-import planetLogo from '../assets/planet.svg';
+import dazn1 from '../assets/dazn1.jpg';
+import dazn2 from '../assets/dazn2.jpg';
+import dazn3 from '../assets/dazn3.jpeg';
+
+// import planetLogo from '../assets/planet.svg';
+import planetLogo from '../assets/planet.ico';
+import planet1 from '../assets/planet1.jpg';
+import planet2 from '../assets/planet2.jpg';
+import planet3 from '../assets/planet3.jpg';
+import planet4 from '../assets/planet4.jpg';
+
 import ivoteLogo from '../assets/ivote.png';
+import ivote1 from '../assets/ivote1.jpg';
+import ivote2 from '../assets/ivote2.jpg';
+import ivote3 from '../assets/ivote3.jpg';
+import ivote4 from '../assets/ivote4.jpg';
+import ivote5 from '../assets/ivote5.png';
+import ivote6 from '../assets/ivote6.png';
+import ivote7 from '../assets/ivote7.png';
+
 import whmcsLogo from '../assets/whmcs.jpg';
+import whmcs1 from '../assets/whmcs1.png';
+import whmcs2 from '../assets/whmcs2.png';
+import whmcs3 from '../assets/whmcs3.png';
+import whmcs4 from '../assets/whmcs4.jpg';
+
 import advivusLogo from '../assets/advivus.jpeg';
+import advivus1 from '../assets/email_camp1.jpg';
+import advivus2 from '../assets/email_camp2.png';
+import advivus3 from '../assets/email_camp3.png';
+import advivus4 from '../assets/email_camp4.png';
+import advivus5 from '../assets/email_camp5.png';
+
+import dach1 from '../assets/dach1.jpeg';
+import dach2 from '../assets/dach2.jpeg';
+import dach3 from '../assets/dach3.jpg';
+import dach4 from '../assets/dach4.png';
+
+import ecomm1 from '../assets/ecomm1.png';
+import ecomm2 from '../assets/ecomm2.png';
+import ecomm3 from '../assets/ecomm3.jpg';
+import ecomm4 from '../assets/ecomm4.png';
+import ecomm5 from '../assets/ecomm5.jpg';
+import ecomm6 from '../assets/ecomm6.jpg';
+
+import pdf1 from '../assets/pdf1.png';
+import pdf2 from '../assets/pdf2.png';
+import pdf3 from '../assets/pdf3.png';
+
+import map1 from '../assets/map1.jpg';
+import map2 from '../assets/map2.png';
+import map3 from '../assets/map3.jpg';
+import map4 from '../assets/map4.jpeg';
+
+import edu1 from '../assets/edu1.png';
+import edu2 from '../assets/edu2.png';
+import edu3 from '../assets/edu3.jpeg';
+
 
 export const projects = [
     {
@@ -20,35 +86,27 @@ export const projects = [
         tech: "SAP, Flutter, APIs",
         image: ktmLogo,
         gallery: [ktm1, ktm2, ktm3, ktm4],
-        impact: "Led the mobile team and delivered a seamless dealer experience.",
+        impact: "Give consultancy services and contribute to the mobile & backend team and delivered a seamless dealer experience.",
     },
     {
         id: "vw",
         name: "VW (Porsche)",
         description: "Automotive platform for VW/Porsche (details as allowed).",
         role: "Senior developer & engineer",
-        tech: "Flutter, APIs",
+        tech: "Flutter, Java Platform, Angular",
         image: volkswagenLogo,
-        gallery: [
-            "https://example.com/vw1.jpg",
-            "https://example.com/vw2.jpg",
-            "https://example.com/vw3.jpg",
-        ],
-        impact: "Led the mobile team and delivered a seamless dealer experience.",
+        gallery: [vw1, vw2, vw3, vw4],
+        impact: "Contributed to the platform and delivered a seamless dealer experience.",
     },
     {
         id: "ivote",
         name: "Parliamentary Elections Platform",
         description: "Voting platform for London, EU, Balkan, S. America regions.",
         role: "Senior developer & engineer",
-        tech: "[Senior developer & engineer]",
+        tech: ".Net MVC Platform, Angular, Razor, MS-SQL",
         image: ivoteLogo,
-        gallery: [
-            "https://example.com/ivote1.jpg",
-            "https://example.com/ivote2.jpg",
-            "https://example.com/ivote3.jpg",
-        ],
-        impact: "Led the mobile team and delivered a seamless dealer experience.",
+        gallery: [ivote1, ivote2, ivote3, ivote4, ivote5, ivote6, ivote7],
+        impact: "Contribute to the core and live codebase and delivered a seamless user experience.",
     },
     {
         id: "planet",
@@ -57,26 +115,18 @@ export const projects = [
         role: "Lead engineer & architect",
         tech: "[Lead engineer & architect]",
         image: planetLogo,
-        gallery: [
-            "https://example.com/planet1.jpg",
-            "https://example.com/planet2.jpg",
-            "https://example.com/planet3.jpg",
-        ],
-        impact: "Led the mobile team and delivered a seamless dealer experience.",
+        gallery: [planet1, planet2, planet3, planet4],
+        impact: "Proven track record of delivering high-quality, scalable, and secure APIs and payment gateway solutions for finance sector.",
     },
     {
         id: "redbull",
         name: "Red-Bull Salzburg",
         description: "Sports platform and apps for Red-Bull Salzburg.",
         role: "Lead engineer & architect",
-        tech: "[Lead engineer & architect]",
+        tech: "Laravel, PHP ERP importer, .Net game processor, jQuery, Bootstrap, MariaDB, Redis,",
         image: redbullLogo,
-        gallery: [
-            "https://example.com/redbull1.jpg",
-            "https://example.com/redbull2.jpg",
-            "https://example.com/redbull3.jpg",
-        ],
-        impact: "Led the mobile team and delivered a seamless dealer experience.",
+        gallery: [rbs1, rbs2, rbs3, rbs4, rbs5],
+        impact: "Led the project and all features, ERP integrations and game processing.",
     },
     {
         id: "dach",
@@ -85,11 +135,7 @@ export const projects = [
         role: "Lead engineer & architect",
         tech: "[Lead engineer & architect]",
         image: '',
-        gallery: [
-            "https://example.com/dach1.jpg",
-            "https://example.com/dach2.jpg",
-            "https://example.com/dach3.jpg",
-        ],
+        gallery: [dach1, dach2, dach3, dach4],
         impact: "Led the mobile team and delivered a seamless dealer experience.",
     },
     {
@@ -99,11 +145,7 @@ export const projects = [
         role: "Lead engineer & architect",
         tech: "[Lead engineer & architect]",
         image: whmcsLogo,
-        gallery: [
-            "https://example.com/whmcs1.jpg",
-            "https://example.com/whmcs2.jpg",
-            "https://example.com/whmcs3.jpg",
-        ],
+        gallery: [whmcs1, whmcs2, whmcs3, whmcs4],
         impact: "Led the mobile team and delivered a seamless dealer experience.",
     },
     {
@@ -111,12 +153,8 @@ export const projects = [
         name: "European E-Commerce Businesses",
         description: "Various e-commerce business platforms.",
         role: "Lead engineer & architect",
-        tech: "[Lead engineer & architect]",
-        gallery: [
-            "https://example.com/ecommerce1.jpg",
-            "https://example.com/ecommerce2.jpg",
-            "https://example.com/ecommerce3.jpg",
-        ],
+        tech: "WordPress + WooCommerce, ERP integration, APIs, React.js, MUI, WoodMart theme, React-Native mobile apps",
+        gallery: [ecomm1, ecomm2, ecomm3, ecomm4, ecomm5, ecomm6],
         impact: "Led the mobile team and delivered a seamless dealer experience.",
     },
     {
@@ -126,11 +164,7 @@ export const projects = [
         role: "Code owner, Platform architect",
         tech: "Symfony, Nest.js APIs, SaaS, React.js, MUI",
         image: advivusLogo,
-        gallery: [
-            "https://example.com/email-campaign1.jpg",
-            "https://example.com/email-campaign2.jpg",
-            "https://example.com/email-campaign3.jpg",
-        ],
+        gallery: [advivus1, advivus2, advivus3, advivus4, advivus5],
         impact: "Led the mobile team and delivered a seamless dealer experience.",
     },
     {
@@ -139,11 +173,7 @@ export const projects = [
         description: "AI-powered PDF reading and analysis app using RAG/CAG and LangChain.",
         role: "Code owner, Platform architect",
         tech: "LangChain, LLMs, SaaS",
-        gallery: [
-            "https://example.com/pdf-reader1.jpg",
-            "https://example.com/pdf-reader2.jpg",
-            "https://example.com/pdf-reader3.jpg",
-        ],
+        gallery: [pdf1, pdf2, pdf3],
         impact: "Led the mobile team and delivered a seamless dealer experience.",
     },
     {
@@ -153,11 +183,7 @@ export const projects = [
         role: "Lead mobile developer",
         tech: "React Native, APIs",
         image: daznLogo,
-        gallery: [
-            "https://example.com/dazn1.jpg",
-            "https://example.com/dazn2.jpg",
-            "https://example.com/dazn3.jpg",
-        ],
+        gallery: [dazn1, dazn2, dazn3],
         impact: "Led the mobile team and delivered a seamless dealer experience.",
     },
     {
@@ -166,11 +192,7 @@ export const projects = [
         description: "Map geolocation with google maps and geofire for business discovery.",
         role: "Lead mobile developer",
         tech: "React Native, Geofire, Google Maps API",
-        gallery: [
-            "https://example.com/business-locator1.jpg",
-            "https://example.com/business-locator2.jpg",
-            "https://example.com/business-locator3.jpg",
-        ],
+        gallery: [map1, map2, map3, map4],
         impact: "Led the mobile team and delivered a seamless dealer experience.",
     },
     {
@@ -179,11 +201,7 @@ export const projects = [
         description: "Education platform for B2B clients.",
         role: "Lead mobile developer",
         tech: "React Native, APIs",
-        gallery: [
-            "https://example.com/e-learning1.jpg",
-            "https://example.com/e-learning2.jpg",
-            "https://example.com/e-learning3.jpg",
-        ],
+        gallery: [edu1, edu2, edu3],
         impact: "Led the mobile team and delivered a seamless dealer experience.",
     },
 ];

@@ -96,6 +96,8 @@ const ProjectPage = () => {
                     </div>
                 )}
 
+                <div className="spacer"></div>
+
                 {/* Gallery Carousel */}
                 {project.gallery && project.gallery.length > 0 && (
                     <div className="gallery-carousel">
@@ -130,12 +132,12 @@ const ProjectPage = () => {
                 {/* Impact/Role */}
                 {project.impact && (
                     <div style={{ marginTop: '1em', fontStyle: 'italic' }}>
-                        <strong>My Impact:</strong> {project.impact}
+                        <strong>Our Impact:</strong> {project.impact}
                     </div>
                 )}
                 {/* Tech Stack */}
                 <div>
-                    <strong>Tech Used:</strong> {project.tech}
+                    <strong>Tech Stack:</strong> {project.tech}
                 </div>
             </section>
             {/* Lightbox Modal */}
