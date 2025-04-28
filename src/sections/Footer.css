@@ -1,0 +1,33 @@
+/* Example: index.css */
+:root {
+    --footer-bg: rgba(245, 245, 245, 0.95);
+    --footer-text: #222;
+    --footer-link: #0077cc;
+    --footer-link-hover: #005fa3;
+}
+
+footer.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 900px;
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 0 2rem;
+    font-size: 0.95rem;
+    z-index: 100;
+    box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.03);
+}
+
+.footer-link {
+    color: var(--footer-link, #0077cc);
+    text-decoration: none;
+    margin: 0 0.5em;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .footer-link:hover {
+    color: var(--footer-link-hover, #005fa3);
+  }

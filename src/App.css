@@ -1,13 +1,31 @@
 .app-container {
   font-family: 'Segoe UI', Arial, sans-serif;
-  max-width: 1200px;
-  width: 900px;
+  max-width: 900px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   background: var(--container-bg);
   color: var(--text);
   position: relative;
   z-index: 1;
+}
+
+/* Tablet: a bit more padding */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 1rem;
+    /* margin: 1rem; */
+  }
+}
+
+@media (max-width: 1000px) {
+  section {
+    margin-right: 55px;
+  }
+}
+
+@media (min-width: 1400px) {
+  
 }
 
 .hero {

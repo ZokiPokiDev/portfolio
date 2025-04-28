@@ -7,6 +7,7 @@ import LocationPage from './pages/LocationPage';
 import ThemeSwitch from './components/ThemeSwitch';
 import SitemapTree from "./components/SitemapTree";
 import ParticleNetwork from "./components/ParticleNetwork";
+import Footer from "./sections/Footer";
 import './App.css';
 import './components/Gallery.css';
 import './components/LightboxModal.css';
@@ -28,6 +29,7 @@ function App() {
           <Route path="/services/:id" element={<ServicePage />} />
           <Route path="/locations/:id" element={<LocationPage />} />
         </Routes>
+        <Footer/>
       </div>
     </BrowserRouter>
   );

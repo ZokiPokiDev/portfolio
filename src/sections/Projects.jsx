@@ -1,14 +1,18 @@
 import { Link } from 'react-router-dom';
 import { projects } from '../base/projects';
 
-const Projects = () => (
+const Projects = () => {
+    return (
     <section id="projects" className="projects">
         <h2>Projects</h2>
         <ul>
-            {projects.map((proj, idx) => (
+            {projects.map((proj, idx) => {
+                const link = proj.link ?? `/projects/${proj.id}`;
+                
+                return (
                 <div id={proj.id} className="box-card" key={idx} style={{ marginBottom: '1em' }}>
                     <li>
-                        <Link to={`/projects/${proj.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <Link to={link} style={{ textDecoration: 'none', color: 'inherit' }}>
                             {proj.image && (
                                 <img
                                     src={proj.image}
@@ -23,9 +27,9 @@ const Projects = () => (
                         </Link>
                     </li>
                 </div>
-            ))}
+            )})}
         </ul>
     </section>
-);
+)};
 
 export default Projects;

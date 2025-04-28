@@ -33,6 +33,7 @@ const treeData = [
         ],
     },
     { id: "get-in-touch", label: "Get in touch", link: "#get-in-touch" },
+    { id: "locations", label: "Locations", link: "#locations" },
     { id: "contact", label: "Contact", link: "#contact" },
 ];
 

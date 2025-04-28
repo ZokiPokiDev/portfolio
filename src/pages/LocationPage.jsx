@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom"
 import { locations } from "../sections/Locations"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
+import "./LocationPage.css"
 
 const LocationPage = () => {
     const { id } = useParams()

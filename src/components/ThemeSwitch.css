@@ -19,6 +19,10 @@ body {
     --collage-bg: #69757d;
     --modal-overlay: rgba(0,0,0,0.8);
     --shadow: 0 2px 8px rgba(0,0,0,0.25);
+    --footer-bg: #494d5a;
+    --footer-text: #e4e6eb;
+    --footer-link: #0077cc;
+    --footer-link-hover: #005fa3;
 }
 
 .theme-switch {

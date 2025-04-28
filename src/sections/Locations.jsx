@@ -5,7 +5,7 @@ export const locations = [
   { id: 'austria', title: "Austria", description: "Main Office", address: "SchafwiesenStrasse 30G, 4600 Wels, Austria", coords: [48.16500921128455, 14.051316422530224] },
   { id: 'germany', title: "Germany", description: "No Office", address: "", coords: [48.16500921128455, 14.051316422530224] },
   { id: 'switzerland', title: "Switzerland", description: "No Office", address: "", coords: [48.16500921128455, 14.051316422530224] },
-  { id: 'balkans', title: "Balkans", description: "Macedonia Offices, Bitola, Tetovo, Skopje", address: "Ul. Blagoja Toska 47, 1200 Tetovo, Macedonia", coords: [42.00701758813992, 20.97653813636128] },
+  { id: 'balkans', title: "Balkans", description: "Macedonia Offices: Bitola, Skopje, Tetovo", address: "Јавен Адвертајзинг Дооел Битола, MK, Климент Охридски 4/4, Bitola 7000, Macedonia", coords: [41.0272180, 21.3341320] },
   { id: 'usa', title: "USA", description: "No Office", address: "No Office", coords: [41.88921778493731, -87.61809182156995] },
 ];
 

@@ -79,6 +79,7 @@ const ProjectPage = () => {
 
             <section id={project.id} className="project-section">
                 <h2>{project.name}</h2>
+                
                 {project.image && (
                     <img src={project.image} alt={project.name} style={{ width: '120px', margin: '1em 0' }} />
                 )}
@@ -142,6 +143,7 @@ const ProjectPage = () => {
                     <strong>Tech Stack:</strong> {project.tech}
                 </div>
             </section>
+
             {/* Lightbox Modal */}
             {modalOpen && project.gallery && (
                 <div className="modal-overlay" onClick={closeModal}>

@@ -5,7 +5,9 @@ const GetInTouch = () => (
         <div className="">
             <div>
                 <h2>Get In Touch</h2>
-                <p>For inquiries or questions, please contact me at: <a href="mailto:panev.zoran.te@gmail.com" target="_blank" rel="noopener noreferrer">panev.zoran.te@gmail.com</a></p>
+                <p>For quotes, please contact us at: <a href="mailto:contact@javen.mk" target="_blank" rel="noopener noreferrer">contact@javen.mk</a></p>
+                <p>For inquiries or questions, please contact us at: <a href="mailto:javenmk@gmail.com" target="_blank" rel="noopener noreferrer">javenmk@gmail.com</a></p>
+                <p>For technical questions, please contact us at: <a href="mailto:zoran.panev@gmail.com" target="_blank" rel="noopener noreferrer">zoran.panev@gmail.com</a></p>
             </div>
         </div>
     </section>

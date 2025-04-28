@@ -73,7 +73,7 @@ const Hero = () => {
 
   return (
     <section id="hero" className="hero">
-      <h1>Professional Software Solutions</h1>
+      <h1>Agency Javen IT solutions</h1>
 
       <h2 style={{ minHeight: '2.5em', fontFamily: 'monospace', fontWeight: 400 }}>
         {titleTyping.displayed}
