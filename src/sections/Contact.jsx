@@ -5,6 +5,9 @@ const Contact = () => (
       <h3>CEO: Ana Ristevska</h3>
       <p>Mob: +389 78 391 978</p>
       <br />
+      <h3>TUS fractional member: Michaela Dimovska</h3>
+      <p>Mob: +1 425 472 8532</p>
+      <br />
       <h3>CTO: Zoran Panev</h3>
       <p>Mob: +43 69 010 414 849</p>
       <br />
