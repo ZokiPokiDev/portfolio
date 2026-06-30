@@ -66,6 +66,9 @@ import dynatraceLogo from '../assets/dynatrace.svg';
 import stripeLogo from '../assets/stripe.svg';
 import bootstrapLogo from '../assets/bootstrap.svg';
 import firebaseLogo from '../assets/firebase.svg';
+import windsurfLogo from '../assets/windsurf.svg';
+import zedindustriesLogo from '../assets/zedindustries.svg';
+import opencodeLogo from '../assets/opencode.svg';
 
 const groupedTechStack = {
   "Full-Stack": [
@@ -139,6 +142,9 @@ const groupedTechStack = {
     { name: 'LangChain', logo: langchainLogo },
     { name: 'OpenAI', logo: openaiLogo },
     { name: 'Ollama', logo: ollamaLogo },
+    { name: 'Windsurf', logo: windsurfLogo },
+    { name: 'Zed Industries', logo: zedindustriesLogo },
+    { name: 'Opencode', logo: opencodeLogo },
   ],
   "Mobile": [
     { name: 'Flutter', logo: flutterLogo },

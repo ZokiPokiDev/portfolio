@@ -76,6 +76,8 @@ import edu1 from '../assets/edu1.png';
 import edu2 from '../assets/edu2.png';
 import edu3 from '../assets/edu3.jpeg';
 
+import pdfLogo from '../assets/pdf-logo.png';
+
 import javenitLogo from '../assets/javenit.jpeg';
 
 export const projects = [
@@ -173,6 +175,7 @@ export const projects = [
         id: "pdf-reader",
         name: "AI PDF Reader App & Web (SaaS)",
         description: "AI-powered PDF reading and analysis app using RAG/CAG and LangChain.",
+        image: pdfLogo,
         role: "Code owner, Platform architect",
         tech: "LangChain, LLMs, SaaS",
         gallery: [pdf1, pdf2, pdf3],
@@ -223,6 +226,7 @@ export const projects = [
         name: "JavenMK (www.javenmk.com) [EN: Public Macedonia Services]",
         link: "https://javenmk.com",
         description: "Public & Government sector solutions dedicated for Macedonia.",
+        image: edu2,
         role: "Contractor",
         tech: "APIs, SaaS, React.js, PHP, Python, Node.js",
         impact: "Architect, design & build distributed systems.",
@@ -232,6 +236,7 @@ export const projects = [
         name: "Javen Advertising (www.javen-advertising.com) [EN: Public Advertising Services]",
         link: "https://javen-advertising.com",
         description: "Marketing and advertising solutions.",
+        image: edu3,
         role: "Contractor",
         tech: "Facebook, Email campaigns, SEO, SEM, Social media marketing, Content marketing,",
         impact: "Create professional and SEO optimized content, designs, and marketing campaigns.",
