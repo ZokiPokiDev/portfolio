@@ -1,5 +1,5 @@
 .app-container {
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: Inter, 'Segoe UI', Arial, sans-serif;
   max-width: 900px;
   width: 100%;
   margin: 0 auto;
@@ -8,6 +8,9 @@
   color: var(--text);
   position: relative;
   z-index: 1;
+  border-left: 1px solid var(--default-border);
+  border-right: 1px solid var(--default-border);
+  box-shadow: 0 0 40px rgba(31, 41, 55, 0.06);
 }
 
 /* Tablet: a bit more padding */
@@ -38,28 +41,26 @@
   padding: 0;
 }
 
-.projects li {
-  margin-bottom: 1.5rem;
-}
-
 .tech {
   display: inline-block;
-  background: #e3f2fd;
-  color: #1976d2;
+  background: var(--secondary);
+  color: var(--primary);
   padding: 0.2em 0.6em;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 0.95em;
   margin-top: 0.3em;
+  font-weight: 700;
 }
 
 .role {
   display: inline-block;
-  background: #eeeeee;
-  color: #3f3f3f;
+  background: rgba(104, 113, 125, 0.12);
+  color: var(--text);
   padding: 0.2em 0.6em;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 0.95em;
   margin-top: 0.3em;
+  font-weight: 700;
 }
 
 .typing-cursor {
@@ -96,31 +97,261 @@
   margin: 1.5em 0;
   background: var(--card-bg);
   color: var(--text);
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid var(--card-border);
   padding: 1em 2em;
   box-shadow: var(--shadow);
-  transition: background 0.2s, color 0.2s, border 0.2s;
+  transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 .box-card-lighter {
   margin: 1em 0;
   background: var(--card-bg);
   color: var(--text);
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid var(--card-border);
   padding: 1em 2em;
   box-shadow: var(--shadow);
-  transition: background 0.2s, color 0.2s, border 0.2s;
+  transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 .card {
   margin: 1em 0;
   background: var(--card-bg);
   color: var(--text);
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid var(--card-border);
   padding: 1em 2em;
   box-shadow: var(--shadow);
-  transition: background 0.2s, color 0.2s, border 0.2s;
+  transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.box-card:hover,
+.box-card-lighter:hover,
+.card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-hover-darker);
+  transform: translateY(-2px);
+}
+
+.box-card:active,
+.box-card-lighter:active,
+.card:active {
+  transform: translateY(0) scale(0.995);
+}
+
+.projects a,
+.footer-link,
+.topbar-link,
+.text-link {
+  text-underline-offset: 0.2em;
+}
+
+.projects a:hover h3,
+.projects a:focus h3 {
+  color: var(--primary);
+}
+
+.projects-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.projects-head h2 {
+  margin-bottom: 0.2rem;
+}
+
+.projects-head p {
+  margin: 0;
+  color: var(--muted-text);
+}
+
+.project-count {
+  flex: 0 0 auto;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: var(--muted-text);
+  background: var(--card-bg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem;
+}
+
+.project-controls {
+  display: grid;
+  grid-template-columns: 1fr minmax(220px, 0.42fr);
+  gap: 0.75rem;
+  margin: 1rem 0 1.1rem;
+}
+
+.project-filter {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.project-filter button,
+.project-more,
+.project-open {
+  min-height: 2.25rem;
+  padding: 0.42rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background 0.16s ease, color 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.project-filter button:hover,
+.project-filter button.active,
+.project-more:hover,
+.project-open:hover {
+  border-color: var(--primary);
+  background: var(--hover-bg);
+  color: var(--primary);
+}
+
+.project-filter button.active {
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.project-search {
+  width: 100%;
+  min-height: 2.35rem;
+  border-radius: 8px;
+  padding: 0.5rem 0.7rem;
+  box-shadow: var(--shadow);
+}
+
+.project-list {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+}
+
+.project-row {
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+
+.project-row:hover,
+.project-row.expanded {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-hover);
+}
+
+.project-summary {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 72px;
+  padding: 0.65rem 0.8rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  box-shadow: none;
+  text-align: left;
+}
+
+.project-summary:hover {
+  border-color: transparent;
+  box-shadow: none;
+  filter: none;
+}
+
+.project-logo {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+
+.project-main {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.project-main strong {
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.project-main small {
+  color: var(--muted-text);
+  line-height: 1.35;
+}
+
+.project-chevron {
+  display: inline-grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--secondary);
+  color: var(--primary);
+  font-weight: 900;
+}
+
+.project-details {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0 0.9rem 0.95rem 4.95rem;
+}
+
+.project-details p {
+  margin: 0;
+  color: var(--muted-text);
+}
+
+.project-meta {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.project-open {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+}
+
+.project-more {
+  margin-top: 1rem;
+  margin-right: 0.55rem;
+}
+
+.project-more.secondary {
+  color: var(--muted-text);
+}
+
+@media (max-width: 720px) {
+  .projects-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .project-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .project-summary {
+    grid-template-columns: 46px minmax(0, 1fr) auto;
+  }
+
+  .project-details {
+    padding-left: 0.9rem;
+  }
 }

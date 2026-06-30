@@ -155,7 +155,7 @@ const TechStack = () => (
         <div key={group} style={{ marginBottom: '2em' }}>
           <h3 style={{ marginBottom: '0.5em', marginTop: '1.5em' }}>{group}</h3>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5em' }}>
-            {techs.map((tech, idx) => (
+            {techs.map((tech) => (
               <div key={tech.name} style={{ textAlign: 'center' }}>
                 <img src={tech.logo} alt={tech.name} style={{ width: '40px', height: '40px', marginBottom: '0.5em' }} />
                 <div>{tech.name}</div>

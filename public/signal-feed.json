@@ -1,0 +1,14 @@
+[
+  {
+    "source": "LinkedIn / pinned",
+    "title": "AI portfolio refresh",
+    "text": "A short update about turning the portfolio into proof-of-work for AI and engineering services.",
+    "href": "https://linkedin.com/in/zoranpanev"
+  },
+  {
+    "source": "Build log",
+    "title": "Production recovery notes",
+    "text": "Plesk, Docker, certificates, memory pressure, and the decision to stop local Ollama on a small VPS.",
+    "href": "#get-in-touch"
+  }
+]

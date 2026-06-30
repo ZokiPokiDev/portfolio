@@ -13,26 +13,31 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Light Theme Colors */
-  --bg: #fff;
-  --text: #222;
-  --card-bg: #fafafa;
-  --container-bg: #fafbfc;
-  --card-border: #eaeaea;
+  --bg: #f3f4f6;
+  --text: #222831;
+  --muted-text: #68717d;
+  --card-bg: #fbfcfd;
+  --container-bg: #f8fafc;
+  --card-border: #dfe3e8;
   --white-border: #fff;
-  --primary: #1a73e8;
-  --primary-bg: #f2f5fa;
-  --secondary: #e7f0fd;
+  --primary: #1f6feb;
+  --primary-bg: #eef2f7;
+  --secondary: #e7ecf3;
   --input-bg: #f8f9fa;
   --input-border: #d1d5db;
-  --default-border: #eaeaea;
+  --default-border: #dfe3e8;
   --arrow: #e3f2fd;
   --arrow-bg: rgba(40, 40, 40, 0.1);
   --modal-bg: #fafbfc;
   --collage-bg: #f2f5fa;
   --modal-overlay: rgba(0, 0, 0, 0.4);
-  --shadow: 0 2px 8px rgba(60, 60, 60, 0.05);
-  --shadow-hover: 0 2px 8px rgba(60, 60, 60, 0.08);
-  --shadow-hover-darker: 0 2px 16px rgba(60, 60, 60, 0.18);
+  --rail-card-bg: rgba(255, 255, 255, 0.72);
+  --rail-border: rgba(31, 41, 55, 0.12);
+  --rail-shadow: rgba(31, 41, 55, 0.12);
+  --hover-bg: rgba(31, 111, 235, 0.08);
+  --shadow: 0 8px 24px rgba(31, 41, 55, 0.07);
+  --shadow-hover: 0 12px 28px rgba(31, 41, 55, 0.11);
+  --shadow-hover-darker: 0 16px 38px rgba(31, 41, 55, 0.18);
 }
 
 body {
@@ -48,18 +53,25 @@ body {
 
 h1,
 h2 {
-  color: #1a73e8;
+  color: var(--primary);
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--primary);
   text-decoration: inherit;
+  transition: color 0.16s ease, background 0.16s ease, transform 0.16s ease;
 }
 
 a:hover {
-  color: #535bf2;
+  color: #1557ba;
   cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
 }
 
 h1 {
@@ -74,24 +86,27 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--primary);
+  color: #fff;
   cursor: pointer;
-  transition: border-color 0.25s;
+  box-shadow: var(--shadow);
+  transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
 }
 
 button:hover {
-  border-color: #646cff;
+  border-color: rgba(31, 111, 235, 0.35);
+  box-shadow: var(--shadow-hover);
+  filter: brightness(1.04);
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+button:active {
+  transform: translateY(1px) scale(0.985);
 }
 
 section {
   margin-bottom: 3rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid var(--default-border);
 }
 
 input,

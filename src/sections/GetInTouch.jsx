@@ -1,13 +1,11 @@
-import { Link } from 'react-router-dom';
-
 const GetInTouch = () => (
     <section id="get-in-touch" className="get-in-touch">
         <div className="">
             <div>
                 <h2>Get In Touch</h2>
-                <p>For quotes, please contact us at: <a href="mailto:contact@javen.mk" target="_blank" rel="noopener noreferrer">contact@javen.mk</a></p>
-                <p>For inquiries or questions, please contact us at: <a href="mailto:javenmk@gmail.com" target="_blank" rel="noopener noreferrer">javenmk@gmail.com</a></p>
-                <p>For technical questions, please contact us at: <a href="mailto:zoran.panev@gmail.com" target="_blank" rel="noopener noreferrer">zoran.panev@gmail.com</a></p>
+                <p>For AI, platform, and architecture work: <a href="mailto:zoran.panev@gmail.com" target="_blank" rel="noopener noreferrer">zoran.panev@gmail.com</a></p>
+                <p>For collaboration and public updates: <a href="https://linkedin.com/in/zoranpanev" target="_blank" rel="noopener noreferrer">LinkedIn / zoranpanev</a></p>
+                <p>For code references and experiments: <a href="https://github.com/zokipokidev" target="_blank" rel="noopener noreferrer">GitHub / zokipokidev</a></p>
             </div>
         </div>
     </section>

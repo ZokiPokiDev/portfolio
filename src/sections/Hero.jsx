@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
 const titles = [
+  "Software Engineer & AI Enthusiast",
   "Full Stack Engineering",
-  "AI/LLM Engineering & Architecture",
+  "AI/LLM Product Engineering",
   "Lead Software Engineering & Solution Architecture",
-  "AI Platform Specialization",
-  "SaaS & API Integration Expertise",
+  "SaaS, APIs & Automation",
 ];
 
 const descriptions = [
-  "Building modern web, mobile, and AI-powered solutions for global brands and startups.",
-  "Delivering enterprise SaaS and API integrations with AI/LLM technologies.",
-  "Crafting scalable platforms for e-commerce, finance, logistics, and automotive sectors.",
-  "Specializing in RAG/CAG, LangChain, and advanced AI response reasoning.",
+  "Building practical AI tools, web platforms, APIs, and mobile products.",
+  "Shipping production systems across SaaS, automation, e-commerce, finance, and sports.",
+  "Connecting business workflows with LLMs, RAG/CAG, LangChain, and clean architecture.",
+  "Keeping infrastructure understandable: Linux, Plesk, Docker, nginx, monitoring, and recovery.",
 ];
 
 // Separate configs for each typing loop
@@ -73,7 +73,7 @@ const Hero = () => {
 
   return (
     <section id="hero" className="hero">
-      <h1>Agency Javen IT solutions</h1>
+      <h1>SystemPro Tech / Zoran Panev</h1>
 
       <h2 style={{ minHeight: '2.5em', fontFamily: 'monospace', fontWeight: 400 }}>
         {titleTyping.displayed}

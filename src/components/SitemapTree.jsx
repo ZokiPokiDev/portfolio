@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./SitemapTree.css";
 
 const treeData = [
@@ -36,6 +36,87 @@ const treeData = [
     { id: "locations", label: "Locations", link: "#locations" },
     { id: "contact", label: "Contact", link: "#contact" },
 ];
+
+const fallbackFeedItems = [
+    {
+        source: "Now",
+        title: "AI portfolio lab",
+        text: "Preparing a real Ask Zoran assistant from project notes, CV context, and articles.",
+        href: "#get-in-touch",
+    },
+    {
+        source: "LinkedIn",
+        title: "VPS rescue notes",
+        text: "Plesk, Docker, memory pressure, Ollama, nginx, and certificate recovery.",
+        href: "https://linkedin.com/in/zoranpanev",
+    },
+    {
+        source: "GitHub",
+        title: "GitHub activity",
+        text: "Public work, experiments, and engineering references.",
+        href: "https://github.com/zokipokidev",
+    },
+];
+
+function formatRepoDate(value) {
+    if (!value) return "Live";
+
+    return new Intl.DateTimeFormat("en", {
+        month: "short",
+        day: "numeric",
+    }).format(new Date(value));
+}
+
+function useSignalFeed() {
+    const [githubItems, setGithubItems] = useState([]);
+    const [curatedItems, setCuratedItems] = useState([]);
+
+    useEffect(() => {
+        const controller = new AbortController();
+
+        fetch("https://api.github.com/users/zokipokidev/repos?sort=pushed&type=owner&per_page=4", {
+            signal: controller.signal,
+            headers: { Accept: "application/vnd.github+json" },
+        })
+            .then((response) => {
+                if (!response.ok) throw new Error("GitHub feed unavailable");
+                return response.json();
+            })
+            .then((repos) => {
+                const mapped = repos
+                    .filter((repo) => !repo.fork)
+                    .slice(0, 3)
+                    .map((repo) => ({
+                        source: `GitHub / ${formatRepoDate(repo.pushed_at)}`,
+                        title: repo.name,
+                        text: repo.description || `Recent ${repo.language || "code"} repository activity.`,
+                        href: repo.html_url,
+                    }));
+
+                setGithubItems(mapped);
+            })
+            .catch(() => setGithubItems([]));
+
+        fetch("/signal-feed.json", { signal: controller.signal })
+            .then((response) => {
+                if (!response.ok) throw new Error("Curated feed unavailable");
+                return response.json();
+            })
+            .then((items) => {
+                if (Array.isArray(items)) {
+                    setCuratedItems(items);
+                }
+            })
+            .catch(() => setCuratedItems([]));
+
+        return () => controller.abort();
+    }, []);
+
+    return useMemo(() => {
+        const merged = [...curatedItems, ...githubItems];
+        return merged.length ? merged.slice(0, 5) : fallbackFeedItems;
+    }, [curatedItems, githubItems]);
+}
 
 function TreeNode({ node, expanded, toggle }) {
     const hasChildren = node.children && node.children.length > 0;
@@ -112,6 +193,7 @@ function TreeNode({ node, expanded, toggle }) {
 
 const SitemapTree = () => {
     const [expanded, setExpanded] = useState({});
+    const feedItems = useSignalFeed();
 
     const toggle = (id) => {
         setExpanded((prev) => ({
@@ -121,18 +203,40 @@ const SitemapTree = () => {
     };
 
     return (
-        <nav className="sitemap-tree" aria-label="Site map">
-            <ul>
-                {treeData.map((node) => (
-                    <TreeNode
-                        key={node.id}
-                        node={node}
-                        expanded={expanded}
-                        toggle={toggle}
-                    />
+        <aside className="sitemap-tree" aria-label="Site rail">
+            <nav className="rail-block" aria-label="Site map">
+                <div className="rail-heading">Index</div>
+                <ul>
+                    {treeData.map((node) => (
+                        <TreeNode
+                            key={node.id}
+                            node={node}
+                            expanded={expanded}
+                            toggle={toggle}
+                        />
+                    ))}
+                </ul>
+            </nav>
+            <section className="signal-feed" aria-label="Developer signal feed">
+                <div className="rail-heading">Signal Feed</div>
+                {feedItems.map((item) => (
+                    <a
+                        className="signal-card"
+                        href={item.href}
+                        target={item.href.startsWith("#") ? undefined : "_blank"}
+                        rel={item.href.startsWith("#") ? undefined : "noopener noreferrer"}
+                        key={item.title}
+                    >
+                        <span>{item.source}</span>
+                        <strong>{item.title}</strong>
+                        <small>{item.text}</small>
+                    </a>
                 ))}
-            </ul>
-        </nav>
+                <a className="rail-cta" href="mailto:zoran.panev@gmail.com">
+                    Contact Zoran
+                </a>
+            </section>
+        </aside>
     );
 };
 

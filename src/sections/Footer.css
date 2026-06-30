@@ -1,9 +1,8 @@
-/* Example: index.css */
 :root {
-    --footer-bg: rgba(245, 245, 245, 0.95);
+    --footer-bg: rgba(248, 250, 252, 0.92);
     --footer-text: #222;
-    --footer-link: #0077cc;
-    --footer-link-hover: #005fa3;
+    --footer-link: var(--primary);
+    --footer-link-hover: #1557ba;
 }
 
 footer.footer {
@@ -15,10 +14,12 @@ footer.footer {
     background: var(--footer-bg);
     color: var(--footer-text);
     text-align: center;
-    padding: 0 2rem;
-    font-size: 0.95rem;
+    padding: 0.45rem 2rem;
+    font-size: 0.88rem;
     z-index: 100;
-    box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.03);
+    border-top: 1px solid var(--default-border);
+    box-shadow: 0 -8px 24px rgba(31, 41, 55, 0.08);
+    backdrop-filter: blur(12px);
 }
 
 .footer-link {
@@ -26,8 +27,11 @@ footer.footer {
     text-decoration: none;
     margin: 0 0.5em;
     font-weight: 500;
-    transition: color 0.2s;
+    transition: color 0.2s, background 0.2s;
+    border-radius: 6px;
+    padding: 0.1rem 0.25rem;
   }
   .footer-link:hover {
     color: var(--footer-link-hover, #005fa3);
+    background: var(--hover-bg);
   }
