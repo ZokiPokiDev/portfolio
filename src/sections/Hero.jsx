@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
 const titles = [
-  "Software Engineer & AI Enthusiast",
-  "Full Stack Engineering",
-  "AI/LLM Product Engineering",
-  "Lead Software Engineering & Solution Architecture",
-  "SaaS, APIs & Automation",
+  "Digitalization for business workflows",
+  "AI integrations on real company data",
+  "Legacy modernization without losing operations",
+  "Full stack engineering and solution architecture",
+  "SaaS, APIs, automation, and platform delivery",
 ];
 
 const descriptions = [
-  "Building practical AI tools, web platforms, APIs, and mobile products.",
-  "Shipping production systems across SaaS, automation, e-commerce, finance, and sports.",
-  "Connecting business workflows with LLMs, RAG/CAG, LangChain, and clean architecture.",
-  "Keeping infrastructure understandable: Linux, Plesk, Docker, nginx, monitoring, and recovery.",
+  "Turn manual work, spreadsheets, and disconnected tools into stable digital workflows.",
+  "Connect CRM, ERP, e-commerce, portals, documents, and APIs into one practical operating layer.",
+  "Add LLMs, RAG/CAG, LangChain, and automations where they can reduce real business friction.",
+  "Keep delivery grounded in production engineering: Linux, Docker, nginx, databases, monitoring, and recovery.",
+];
+
+const proofPoints = [
+  { label: "15+ years", text: "software delivery" },
+  { label: "AI + RAG", text: "business data workflows" },
+  { label: "EU projects", text: "finance, SaaS, automotive" },
 ];
 
 // Separate configs for each typing loop
@@ -73,17 +79,36 @@ const Hero = () => {
 
   return (
     <section id="hero" className="hero">
-      <h1>SystemPro Tech / Zoran Panev</h1>
+      <p className="hero-kicker">SystemPro Tech / Zoran Panev</p>
+      <h1>Business Modernization & AI Integration</h1>
 
-      <h2 style={{ minHeight: '2.5em', fontFamily: 'monospace', fontWeight: 400 }}>
+      <h2 className="hero-type">
         {titleTyping.displayed}
         <span className="typing-cursor" style={{ opacity: titleTyping.typing ? 1 : 0 }}>|</span>
       </h2>
       
-      <p style={{ minHeight: '3em', fontFamily: 'monospace', fontSize: '1.2em' }}>
+      <p className="hero-description">
         {descTyping.displayed}
         <span className="typing-cursor" style={{ opacity: descTyping.typing ? 1 : 0 }}>|</span>
       </p>
+
+      <div className="hero-actions" aria-label="Primary actions">
+        <a className="hero-cta primary" href="#get-in-touch">
+          Start modernization
+        </a>
+        <a className="hero-cta secondary" href="#projects">
+          Review proof of work
+        </a>
+      </div>
+
+      <div className="hero-proof" aria-label="Delivery proof points">
+        {proofPoints.map((item) => (
+          <div className="hero-proof-item" key={item.label}>
+            <strong>{item.label}</strong>
+            <span>{item.text}</span>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

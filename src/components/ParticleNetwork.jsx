@@ -157,15 +157,19 @@ function createGlobeDots() {
 const GLOBE_DOTS = createGlobeDots();
 
 function getClusterLayout(width, height) {
-  const railReserve = width > 560 ? 290 : 90;
+  const compact = width < 560;
+  const railReserve = compact ? 88 : clamp(width * 0.22, 180, 310);
   const drawingWidth = Math.max(width - railReserve, 260);
-  const centerX = Math.min(drawingWidth * 0.5, 260);
+  const centerBias = width > 900 ? 0.54 : compact ? 0.48 : 0.5;
+  const maxCenterX = compact ? width - 70 : width - railReserve - 86;
+  const centerX = clamp(drawingWidth * centerBias, compact ? 120 : 210, maxCenterX);
+  const spread = width > 900 ? 46 : width > 560 ? 36 : 22;
   const firstY = Math.max(118, height * 0.18);
   const gap = Math.max(132, Math.min(178, height * 0.19));
 
   return CLUSTERS.map((cluster, index) => ({
     ...cluster,
-    x: centerX + (index % 2 === 0 ? -28 : 28),
+    x: centerX + (index % 2 === 0 ? -spread : spread),
     y: firstY + index * gap,
   }));
 }
@@ -735,7 +739,7 @@ function ParticleNetwork() {
       style={{
         position: "fixed",
         top: 0,
-        left: "900px",
+        left: "960px",
         zIndex: 0,
         pointerEvents: "none",
       }}

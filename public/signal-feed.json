@@ -1,14 +1,20 @@
 [
   {
-    "source": "LinkedIn / pinned",
-    "title": "AI portfolio refresh",
-    "text": "A short update about turning the portfolio into proof-of-work for AI and engineering services.",
+    "source": "LinkedIn / campaign",
+    "title": "Business modernization entry point",
+    "text": "A clear first step for companies that need digitization, workflow automation, API integration, or AI adoption.",
     "href": "https://linkedin.com/in/zoranpanev"
   },
   {
     "source": "Build log",
-    "title": "Production recovery notes",
-    "text": "Plesk, Docker, certificates, memory pressure, and the decision to stop local Ollama on a small VPS.",
+    "title": "Production recovery and infrastructure notes",
+    "text": "Plesk, Docker, certificates, memory pressure, nginx routing, and practical operations work for small business systems.",
     "href": "#get-in-touch"
+  },
+  {
+    "source": "Offer / AI",
+    "title": "RAG and document intelligence",
+    "text": "Use company documents, support knowledge, PDFs, and project data as grounded context for internal AI assistants.",
+    "href": "#modernization"
   }
 ]

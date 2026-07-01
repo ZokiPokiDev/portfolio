@@ -1,8 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState } from "react";
+import { useSignalFeed } from "../hooks/useSignalFeed";
 import "./SitemapTree.css";
 
 const treeData = [
     { id: "home", label: "Home", link: "#hero" },
+    { id: "modernization", label: "Modernization", link: "#modernization" },
     {
         id: "about",
         label: "About",
@@ -32,91 +34,11 @@ const treeData = [
             { id: "e-learning", label: "E-learning", link: "#e-learning" },
         ],
     },
+    { id: "live-signals", label: "Live Signals", link: "#live-signals" },
     { id: "get-in-touch", label: "Get in touch", link: "#get-in-touch" },
     { id: "locations", label: "Locations", link: "#locations" },
     { id: "contact", label: "Contact", link: "#contact" },
 ];
-
-const fallbackFeedItems = [
-    {
-        source: "Now",
-        title: "AI portfolio lab",
-        text: "Preparing a real Ask Zoran assistant from project notes, CV context, and articles.",
-        href: "#get-in-touch",
-    },
-    {
-        source: "LinkedIn",
-        title: "VPS rescue notes",
-        text: "Plesk, Docker, memory pressure, Ollama, nginx, and certificate recovery.",
-        href: "https://linkedin.com/in/zoranpanev",
-    },
-    {
-        source: "GitHub",
-        title: "GitHub activity",
-        text: "Public work, experiments, and engineering references.",
-        href: "https://github.com/zokipokidev",
-    },
-];
-
-function formatRepoDate(value) {
-    if (!value) return "Live";
-
-    return new Intl.DateTimeFormat("en", {
-        month: "short",
-        day: "numeric",
-    }).format(new Date(value));
-}
-
-function useSignalFeed() {
-    const [githubItems, setGithubItems] = useState([]);
-    const [curatedItems, setCuratedItems] = useState([]);
-
-    useEffect(() => {
-        const controller = new AbortController();
-
-        fetch("https://api.github.com/users/zokipokidev/repos?sort=pushed&type=owner&per_page=4", {
-            signal: controller.signal,
-            headers: { Accept: "application/vnd.github+json" },
-        })
-            .then((response) => {
-                if (!response.ok) throw new Error("GitHub feed unavailable");
-                return response.json();
-            })
-            .then((repos) => {
-                const mapped = repos
-                    .filter((repo) => !repo.fork)
-                    .slice(0, 3)
-                    .map((repo) => ({
-                        source: `GitHub / ${formatRepoDate(repo.pushed_at)}`,
-                        title: repo.name,
-                        text: repo.description || `Recent ${repo.language || "code"} repository activity.`,
-                        href: repo.html_url,
-                    }));
-
-                setGithubItems(mapped);
-            })
-            .catch(() => setGithubItems([]));
-
-        fetch("/signal-feed.json", { signal: controller.signal })
-            .then((response) => {
-                if (!response.ok) throw new Error("Curated feed unavailable");
-                return response.json();
-            })
-            .then((items) => {
-                if (Array.isArray(items)) {
-                    setCuratedItems(items);
-                }
-            })
-            .catch(() => setCuratedItems([]));
-
-        return () => controller.abort();
-    }, []);
-
-    return useMemo(() => {
-        const merged = [...curatedItems, ...githubItems];
-        return merged.length ? merged.slice(0, 5) : fallbackFeedItems;
-    }, [curatedItems, githubItems]);
-}
 
 function TreeNode({ node, expanded, toggle }) {
     const hasChildren = node.children && node.children.length > 0;
@@ -193,7 +115,7 @@ function TreeNode({ node, expanded, toggle }) {
 
 const SitemapTree = () => {
     const [expanded, setExpanded] = useState({});
-    const feedItems = useSignalFeed();
+    const { items: feedItems } = useSignalFeed(5);
 
     const toggle = (id) => {
         setExpanded((prev) => ({
