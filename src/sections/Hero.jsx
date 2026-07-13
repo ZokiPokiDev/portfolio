@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { trackEvent } from '../hooks/useCampaignTracking';
 
 const titles = [
   "Digitalization for business workflows",
@@ -93,10 +94,18 @@ const Hero = () => {
       </p>
 
       <div className="hero-actions" aria-label="Primary actions">
-        <a className="hero-cta primary" href="#get-in-touch">
+        <a
+          className="hero-cta primary"
+          href="#lead-capture"
+          onClick={() => trackEvent("cta_click", { target: "lead-capture", placement: "hero" })}
+        >
           Start modernization
         </a>
-        <a className="hero-cta secondary" href="#projects">
+        <a
+          className="hero-cta secondary"
+          href="#projects"
+          onClick={() => trackEvent("cta_click", { target: "projects", placement: "hero" })}
+        >
           Review proof of work
         </a>
       </div>

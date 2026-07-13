@@ -5,7 +5,7 @@ export const fallbackFeedItems = [
     source: "Now",
     title: "AI modernization lab",
     text: "Preparing practical assistants for project notes, documents, support flows, and business operations.",
-    href: "#get-in-touch",
+    href: "#lead-capture",
   },
   {
     source: "LinkedIn / pinned",

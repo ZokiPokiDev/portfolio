@@ -5,6 +5,18 @@ import "./SitemapTree.css";
 const treeData = [
     { id: "home", label: "Home", link: "#hero" },
     { id: "modernization", label: "Modernization", link: "#modernization" },
+    { id: "packages", label: "Packages", link: "#packages" },
+    { id: "proof-demos", label: "Proof Demos", link: "#proof-demos" },
+    {
+        id: "regions",
+        label: "Regions",
+        children: [
+            { id: "dach-modernization", label: "DACH", link: "/dach-modernization" },
+            { id: "gcc-ai-integration", label: "GCC", link: "/gcc-ai-integration" },
+            { id: "uk-saas-rescue", label: "UK", link: "/uk-saas-rescue" },
+            { id: "asia-ai-integration", label: "Asia", link: "/asia-ai-integration" },
+        ],
+    },
     {
         id: "about",
         label: "About",
@@ -35,6 +47,7 @@ const treeData = [
         ],
     },
     { id: "live-signals", label: "Live Signals", link: "#live-signals" },
+    { id: "lead-capture", label: "Lead Form", link: "#lead-capture" },
     { id: "get-in-touch", label: "Get in touch", link: "#get-in-touch" },
     { id: "locations", label: "Locations", link: "#locations" },
     { id: "contact", label: "Contact", link: "#contact" },
@@ -145,8 +158,8 @@ const SitemapTree = () => {
                     <a
                         className="signal-card"
                         href={item.href}
-                        target={item.href.startsWith("#") ? undefined : "_blank"}
-                        rel={item.href.startsWith("#") ? undefined : "noopener noreferrer"}
+                        target={item.href.startsWith("#") || item.href.startsWith("/") ? undefined : "_blank"}
+                        rel={item.href.startsWith("#") || item.href.startsWith("/") ? undefined : "noopener noreferrer"}
                         key={item.title}
                     >
                         <span>{item.source}</span>

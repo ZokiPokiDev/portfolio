@@ -1,6 +1,9 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/env.php';
+systempro_load_env();
+
 const CACHE_TTL_SECONDS = 900;
 const MAX_ITEMS = 12;
 const USER_AGENT = 'SystemProPortfolioFeed/1.0 (+https://systempro.tech)';

@@ -3,7 +3,7 @@
     "source": "LinkedIn / campaign",
     "title": "Business modernization entry point",
     "text": "A clear first step for companies that need digitization, workflow automation, API integration, or AI adoption.",
-    "href": "https://linkedin.com/in/zoranpanev"
+    "href": "#packages"
   },
   {
     "source": "Build log",
@@ -16,5 +16,23 @@
     "title": "RAG and document intelligence",
     "text": "Use company documents, support knowledge, PDFs, and project data as grounded context for internal AI assistants.",
     "href": "#modernization"
+  },
+  {
+    "source": "Regional / DACH",
+    "title": "Modernization audit for DACH teams",
+    "text": "A focused first step for companies that need controlled delivery, documentation, and pragmatic modernization.",
+    "href": "/dach-modernization"
+  },
+  {
+    "source": "Offer / Rescue",
+    "title": "Rescue sprint for unfinished SaaS apps",
+    "text": "Short scope support for products that need production fixes, frontend/backend triage, and delivery cleanup.",
+    "href": "/uk-saas-rescue"
+  },
+  {
+    "source": "Regional / Asia",
+    "title": "English-first AI integration page",
+    "text": "A broader Asia-facing page that stays in English until specific market response shows which language to localize next.",
+    "href": "/asia-ai-integration"
   }
 ]

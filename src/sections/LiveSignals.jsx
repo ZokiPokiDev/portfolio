@@ -9,7 +9,7 @@ const statusLabels = {
 };
 
 const LiveSignals = () => {
-  const { items, status } = useSignalFeed(6);
+  const { items, status } = useSignalFeed(9);
 
   return (
     <section id="live-signals" className="live-signals">
@@ -30,8 +30,8 @@ const LiveSignals = () => {
           <a
             className="live-signal-card"
             href={item.href}
-            target={item.href.startsWith("#") ? undefined : "_blank"}
-            rel={item.href.startsWith("#") ? undefined : "noopener noreferrer"}
+            target={item.href.startsWith("#") || item.href.startsWith("/") ? undefined : "_blank"}
+            rel={item.href.startsWith("#") || item.href.startsWith("/") ? undefined : "noopener noreferrer"}
             key={`${item.source}-${item.title}`}
           >
             <span>{item.source}</span>
