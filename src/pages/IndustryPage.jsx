@@ -2,13 +2,16 @@ import { Link } from "react-router-dom";
 import { industries } from "../sections/Industries";
 import { useParams } from "react-router-dom";
 import './IndustryPage.css';
+import Seo, { seoConfig } from "../components/Seo";
 
 const IndustryPage = () => {
-    const { id } = useParams();
-    const industry = industries.find(industry => industry.id === id)
+    const { slug } = useParams();
+    const industry = industries.find(industry => industry.slug === slug) || industries.find(industry => industry.id === slug)
+    const seo = seoConfig.industries[slug] || {}
 
     return (
         <div className="industry-page">
+            <Seo {...seoConfig.homepage} {...seo} />
             <Link className="topbar-link" to="/" style={{ color: '#1a73e8', textDecoration: 'none', fontWeight: 'bold' }}>
                 ← Back to Portfolio
             </Link>

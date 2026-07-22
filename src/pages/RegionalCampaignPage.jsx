@@ -4,6 +4,7 @@ import { regionCampaigns, servicePackages } from "../base/campaign";
 import LeadCapture from "../sections/LeadCapture";
 import ProofDemos from "../sections/ProofDemos";
 import { trackEvent } from "../hooks/useCampaignTracking";
+import Seo, { seoConfig } from "../components/Seo";
 
 function findRegion(slug) {
   return Object.values(regionCampaigns).find((region) => region.path === `/${slug}`);
@@ -16,6 +17,7 @@ const RegionalCampaignPage = () => {
   const [locale, setLocale] = useState("en");
   const localeOptions = useMemo(() => Object.entries(region?.locales || {}), [region]);
   const copy = region?.locales?.[locale] || region?.locales?.[region?.defaultLocale] || region?.locales?.en;
+  const seo = seoConfig.regions[slug] || {}
 
   useEffect(() => {
     if (!region) return undefined;
@@ -66,6 +68,7 @@ const RegionalCampaignPage = () => {
 
   return (
     <main className="regional-page" lang={locale} dir={copy.dir || "ltr"}>
+      <Seo {...seoConfig.homepage} {...seo} />
       <section className={`regional-hero ${copy.dir === "rtl" ? "rtl" : ""}`}>
         <div className="regional-hero-top">
           <p className="hero-kicker">{copy.kicker}</p>

@@ -4,10 +4,12 @@ import { locations } from "../sections/Locations"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 import "./LocationPage.css"
+import Seo, { seoConfig } from "../components/Seo"
 
 const LocationPage = () => {
-    const { id } = useParams()
-    const location = locations.find((loc) => loc.id === id)
+    const { slug } = useParams()
+    const location = locations.find((loc) => loc.slug === slug) || locations.find((loc) => loc.id === slug)
+    const seo = seoConfig.locations[slug] || {}
 
     const [coords, setCoords] = useState(null)
 
@@ -26,6 +28,7 @@ const LocationPage = () => {
 
     return (
         <div className="location-page">
+            <Seo {...seoConfig.homepage} {...seo} />
             <Link className="topbar-link" to="/" style={{ color: '#1a73e8', textDecoration: 'none', fontWeight: 'bold' }}>
                 ← Back to Portfolio
             </Link>

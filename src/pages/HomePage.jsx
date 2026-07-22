@@ -10,9 +10,11 @@ import LeadCapture from '../sections/LeadCapture';
 import Contact from '../sections/Contact';
 import Locations from '../sections/Locations';
 import GetInTouch from '../sections/GetInTouch';
+import Seo, { seoConfig } from '../components/Seo';
 
 const HomePage = () => (
   <div className="home-page">
+    <Seo {...seoConfig.homepage} />
     <Hero />
     <ModernizationPath />
     <ServicePackages />

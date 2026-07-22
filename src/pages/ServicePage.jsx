@@ -1,19 +1,22 @@
 import { Link } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import { services } from "../sections/Services"
+import Seo, { seoConfig } from "../components/Seo"
 
 const ServicePage = () => {
-    const { id } = useParams()
-    const service = services.find(service => service.id === Number(id))
+    const { slug } = useParams()
+    const service = services.find(service => service.slug === slug) || services.find(service => service.id.toString() === slug)
+    const seo = seoConfig.services[slug] || {}
 
     return (
         <>
+            <Seo {...seoConfig.homepage} {...seo} />
             <Link className="topbar-link" to="/" style={{ color: '#1a73e8', textDecoration: 'none', fontWeight: 'bold' }}>
                 ← Back to Portfolio
             </Link>
             <div className="spacer"></div>
 
-            <h2>Service {service.title}</h2>
+            <h2>{service.title}</h2>
             <h4>{service.description}</h4>
             <h5>{service.summary}</h5>
 
