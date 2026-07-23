@@ -22,6 +22,8 @@ const treeData = [
         label: "About",
         children: [
             { id: "about", label: "About Us", link: "#about" },
+            { id: "founder", label: "Founder", link: "/founder" },
+            { id: "case-studies", label: "Case Studies", link: "/case-studies" },
             { id: "industries", label: "Industries", link: "#industries" },
             { id: "services", label: "Services", link: "#services" },
         ],

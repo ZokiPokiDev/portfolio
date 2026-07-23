@@ -192,6 +192,25 @@ export const seoConfig = {
       canonical: 'https://www.system-pro.tech/asia-ai-integration',
     },
   },
+  // Proof and authority pages
+  proof: {
+    founder: {
+      title: 'Zoran Panev - Founder & CEO | SystemPro Tech',
+      description: 'Zoran Panev is the founder and CEO of SystemPro Tech, with over 20 years of experience in software engineering, AI integration, and digital transformation.',
+      canonical: 'https://www.system-pro.tech/founder',
+      ogTitle: 'Zoran Panev - Founder & CEO | SystemPro Tech',
+      ogDescription: 'Experienced software engineer and AI specialist helping European businesses modernize their digital platforms.',
+      ogUrl: 'https://www.system-pro.tech/founder',
+    },
+    'case-studies': {
+      title: 'Case Studies | SystemPro Tech',
+      description: 'Explore our technical case studies showcasing AI integration, legacy modernization, and digital transformation projects with measurable outcomes.',
+      canonical: 'https://www.system-pro.tech/case-studies',
+      ogTitle: 'Technical Case Studies | SystemPro Tech',
+      ogDescription: 'Real-world examples of AI integration, software modernization, and business automation projects with concrete engineering details and measurable results.',
+      ogUrl: 'https://www.system-pro.tech/case-studies',
+    },
+  },
 };
 
 export default Seo;

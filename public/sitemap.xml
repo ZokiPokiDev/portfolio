@@ -78,6 +78,18 @@
     <changefreq>monthly</changefreq>
   </url>
 
+  <!-- Proof & Authority Pages -->
+  <url>
+    <loc>https://www.system-pro.tech/founder</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.system-pro.tech/case-studies</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
   <!-- Regional Campaign Pages -->
   <url>
     <loc>https://www.system-pro.tech/dach-modernization</loc>

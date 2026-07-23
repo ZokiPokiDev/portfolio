@@ -5,6 +5,8 @@ import IndustryPage from './pages/IndustryPage';
 import ServicePage from './pages/ServicePage';
 import LocationPage from './pages/LocationPage';
 import RegionalCampaignPage from './pages/RegionalCampaignPage';
+import FounderPage from './pages/FounderPage';
+import CaseStudiesPage from './pages/CaseStudiesPage';
 import ThemeSwitch from './components/ThemeSwitch';
 import SitemapTree from "./components/SitemapTree";
 import ParticleNetwork from "./components/ParticleNetwork";
@@ -32,6 +34,8 @@ function App() {
         <SitemapTree />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/founder" element={<FounderPage />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/projects/:id" element={<ProjectPage />} />
           <Route path="/industries/:slug" element={<IndustryPage />} />
           <Route path="/services/:slug" element={<ServicePage />} />
