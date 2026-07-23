@@ -16,7 +16,7 @@ const Contact = () => (
       <p>
         {/* Office Email: <a href="mailto:javenmk@gmail.com">javenmk@gmail.com</a><br /> */}
         {/* Contact Email: <a href="mailto:contact@javen.mk">contact@javen.mk</a><br /> */}
-        Contact Email: <a href="mailto:zoran.panev@gmail.com">zoran.panev@gmail.com</a><br />
+        Contact Email: <a href="mailto:panev.zoran.te@gmail.com">panev.zoran.te@gmail.com</a><br />
         {/* LinkedIn: <a href="https://www.linkedin.com/company/javen-it/" target="_blank" rel="noopener noreferrer">JAVEN Web Dev, Graphics, Marketing & IT Education</a><br /> */}
         {/* LinkedIn: <a href="https://www.linkedin.com/in/ana-ristevska-06897b5b" target="_blank" rel="noopener noreferrer">CEO: Ana Ristevska</a><br /> */}
         LinkedIn: <a href="https://linkedin.com/in/zoranpanev" target="_blank" rel="noopener noreferrer">Zoran Panev</a><br />
