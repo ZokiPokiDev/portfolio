@@ -5,6 +5,7 @@ import ProofDemos from '../sections/ProofDemos';
 import About from '../sections/About';
 import TechStack from '../sections/TechStack';
 import Projects from '../sections/Projects';
+import Posts from '../sections/Posts';
 import LiveSignals from '../sections/LiveSignals';
 import LeadCapture from '../sections/LeadCapture';
 import Contact from '../sections/Contact';
@@ -22,6 +23,7 @@ const HomePage = () => (
     <About />
     <TechStack />
     <Projects />
+    <Posts />
     <LiveSignals />
     <LeadCapture />
     <Locations />

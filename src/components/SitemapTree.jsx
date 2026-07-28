@@ -29,6 +29,7 @@ const treeData = [
         ],
     },
     { id: "tech-stack", label: "Tech Stack", link: "#tech-stack" },
+    { id: "posts", label: "Posts", link: "#posts" },
     {
         id: "projects",
         label: "Projects",
