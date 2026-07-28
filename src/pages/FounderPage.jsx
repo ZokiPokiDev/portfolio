@@ -98,10 +98,10 @@ const FounderPage = () => {
               GitHub Profile
             </a>
             <a 
-              href="mailto:zoran.panev@gmail.com" 
+              href="mailto:panev.zoran.te@gmail.com" 
               className="social-link"
             >
-              Email: zoran.panev@gmail.com
+              Email: panev.zoran.te@gmail.com
             </a>
           </div>
         </section>

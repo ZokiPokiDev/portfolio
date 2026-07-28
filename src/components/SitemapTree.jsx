@@ -170,7 +170,7 @@ const SitemapTree = () => {
                         <small>{item.text}</small>
                     </a>
                 ))}
-                <a className="rail-cta" href="mailto:zoran.panev@gmail.com">
+                <a className="rail-cta" href="mailto:panev.zoran.te@gmail.com">
                     Contact Zoran
                 </a>
             </section>
