@@ -2,8 +2,8 @@
 
 .toptal-badge-container {
   position: fixed;
-  top: 0;
-  right: 280px; /* Just to the right of sitemap-tree (278px + 2px) */
+  top: -100px;
+  right: 320px; /* Just to the right of sitemap-tree (278px + 2px) */
   z-index: 1001;
   transform: translateY(50%);
   display: none;
