@@ -204,6 +204,32 @@ function store_event(array $event): string
     return 'jsonl';
 }
 
+function send_lead_notification(array $lead): bool
+{
+    $to = 'panev.zoran.te@gmail.com';
+    $subject = 'New Project Lead: ' . ($lead['company'] ?: $lead['name'] ?: 'Unknown');
+
+    $body = "New lead submission:\n\n";
+    $body .= "Name: " . ($lead['name'] ?? 'N/A') . "\n";
+    $body .= "Email: " . ($lead['email'] ?? 'N/A') . "\n";
+    $body .= "Company: " . ($lead['company'] ?? 'N/A') . "\n";
+    $body .= "Region: " . ($lead['region'] ?? 'N/A') . "\n";
+    $body .= "Project Type: " . ($lead['project_type'] ?? 'N/A') . "\n";
+    $body .= "Budget: " . ($lead['budget'] ?? 'N/A') . "\n";
+    $body .= "Timeline: " . ($lead['timeline'] ?? 'N/A') . "\n";
+    $body .= "Message: " . ($lead['message'] ?? 'N/A') . "\n";
+    $body .= "Path: " . ($lead['path'] ?? 'N/A') . "\n";
+    $body .= "Source: " . ($lead['source'] ?? 'N/A') . "\n";
+    $body .= "Campaign: " . ($lead['campaign'] ?? 'N/A') . "\n";
+
+    $headers = 'From: noreply@system-pro.tech' . "\r\n" .
+              'Reply-To: ' . ($lead['email'] ?? 'noreply@system-pro.tech') . "\r\n" .
+              'X-Mailer: PHP/' . phpversion() . "\r\n" .
+              'Content-Type: text/plain; charset=UTF-8' . "\r\n";
+
+    return @mail($to, $subject, $body, $headers);
+}
+
 function store_lead(array $lead): string
 {
     $pdo = metrics_db();
@@ -332,6 +358,7 @@ try {
             }
 
             $store = store_lead($lead);
+            $emailSent = send_lead_notification($lead);
             store_event(array_merge(event_record(), [
                 'event_name' => 'lead_created',
                 'path' => $lead['path'],
@@ -345,7 +372,7 @@ try {
                 ]),
             ]));
 
-            json_response(['ok' => true, 'store' => $store]);
+            json_response(['ok' => true, 'store' => $store, 'email_sent' => $emailSent]);
             break;
 
         case 'summary':
