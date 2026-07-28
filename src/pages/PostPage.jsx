@@ -1,6 +1,133 @@
 import { useParams, Link } from 'react-router-dom';
 import { getPostBySlug, getPosts } from '../base/posts';
 import Seo from '../components/Seo';
+import './PostPage.css';
+
+const allPostsTarget = { pathname: '/', hash: '#posts' };
+
+const isUnorderedListItem = (line) => /^\s*[-*+]\s+/.test(line);
+const isOrderedListItem = (line) => /^\s*\d+[.)]\s+/.test(line);
+const isBlockStarter = (line) => (
+  /^```/.test(line)
+  || /^#{1,6}\s+/.test(line)
+  || /^\s*(?:[-*+]\s+|\d+[.)]\s+)/.test(line)
+  || /^\s*(?:---+|\*\*\*+)\s*$/.test(line)
+  || /^>\s?/.test(line)
+);
+
+const renderInlineMarkdown = (text) => {
+  const tokens = text.split(/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|\*[^*]+\*|_[^_]+_)/g);
+
+  return tokens.filter(Boolean).map((token, index) => {
+    if (token.startsWith('**') && token.endsWith('**')) {
+      return <strong key={index}>{token.slice(2, -2)}</strong>;
+    }
+
+    if (token.startsWith('`') && token.endsWith('`')) {
+      return <code key={index}>{token.slice(1, -1)}</code>;
+    }
+
+    const link = token.match(/^\[([^\]]+)\]\(([^\s)]+)(?:\s+"[^"]*")?\)$/);
+    if (link) {
+      const [, label, href] = link;
+      const safeHref = /^(?:https?:|mailto:|\/|#)/i.test(href);
+      return safeHref ? <a key={index} href={href}>{label}</a> : label;
+    }
+
+    if ((token.startsWith('*') && token.endsWith('*')) || (token.startsWith('_') && token.endsWith('_'))) {
+      return <em key={index}>{token.slice(1, -1)}</em>;
+    }
+
+    return token;
+  });
+};
+
+const MarkdownContent = ({ content }) => {
+  const lines = content.replace(/\r\n/g, '\n').split('\n');
+  const blocks = [];
+  let lineIndex = 0;
+
+  while (lineIndex < lines.length) {
+    const line = lines[lineIndex];
+
+    if (!line.trim()) {
+      lineIndex += 1;
+      continue;
+    }
+
+    if (/^```/.test(line)) {
+      const language = line.slice(3).trim();
+      const codeLines = [];
+      lineIndex += 1;
+
+      while (lineIndex < lines.length && !/^```/.test(lines[lineIndex])) {
+        codeLines.push(lines[lineIndex]);
+        lineIndex += 1;
+      }
+
+      if (lineIndex < lines.length) lineIndex += 1;
+      blocks.push(
+        <pre key={`code-${lineIndex}`} data-language={language || undefined}>
+          <code>{codeLines.join('\n')}</code>
+        </pre>
+      );
+      continue;
+    }
+
+    const heading = line.match(/^(#{1,6})\s+(.+?)\s*#*\s*$/);
+    if (heading) {
+      const [, markers, text] = heading;
+      const Heading = `h${markers.length}`;
+      blocks.push(<Heading key={`heading-${lineIndex}`}>{renderInlineMarkdown(text)}</Heading>);
+      lineIndex += 1;
+      continue;
+    }
+
+    if (/^\s*(?:---+|\*\*\*+)\s*$/.test(line)) {
+      blocks.push(<hr key={`rule-${lineIndex}`} />);
+      lineIndex += 1;
+      continue;
+    }
+
+    if (/^>\s?/.test(line)) {
+      const quoteLines = [];
+      while (lineIndex < lines.length && /^>\s?/.test(lines[lineIndex])) {
+        quoteLines.push(lines[lineIndex].replace(/^>\s?/, ''));
+        lineIndex += 1;
+      }
+      blocks.push(<blockquote key={`quote-${lineIndex}`}>{renderInlineMarkdown(quoteLines.join(' '))}</blockquote>);
+      continue;
+    }
+
+    if (isUnorderedListItem(line) || isOrderedListItem(line)) {
+      const ordered = isOrderedListItem(line);
+      const items = [];
+
+      while (lineIndex < lines.length && (ordered ? isOrderedListItem(lines[lineIndex]) : isUnorderedListItem(lines[lineIndex]))) {
+        items.push(lines[lineIndex].replace(ordered ? /^\s*\d+[.)]\s+/ : /^\s*[-*+]\s+/, ''));
+        lineIndex += 1;
+      }
+
+      const List = ordered ? 'ol' : 'ul';
+      blocks.push(
+        <List key={`list-${lineIndex}`}>
+          {items.map((item, itemIndex) => <li key={itemIndex}>{renderInlineMarkdown(item)}</li>)}
+        </List>
+      );
+      continue;
+    }
+
+    const paragraph = [line.trim()];
+    lineIndex += 1;
+    while (lineIndex < lines.length && lines[lineIndex].trim() && !isBlockStarter(lines[lineIndex])) {
+      paragraph.push(lines[lineIndex].trim());
+      lineIndex += 1;
+    }
+    blocks.push(<p key={`paragraph-${lineIndex}`}>{renderInlineMarkdown(paragraph.join(' '))}</p>);
+  }
+
+  return <>{blocks}</>;
+};
 
 const PostPage = () => {
   const { slug } = useParams();
@@ -12,7 +139,7 @@ const PostPage = () => {
       <div className="box-card" style={{ textAlign: 'center', padding: '3rem' }}>
         <h2>Post not found</h2>
         <p>This post doesn't exist or has been removed.</p>
-        <Link to="/#posts" className="text-link">← Back to all posts</Link>
+        <Link to={allPostsTarget} className="text-link">← All Posts</Link>
       </div>
     );
   }
@@ -22,82 +149,6 @@ const PostPage = () => {
     p.slug !== post.slug && 
     p.tags.some(tag => post.tags.includes(tag))
   ).slice(0, 3);
-
-  // Parse content into sections for better styling
-  const renderContent = (content) => {
-    // This simple parser handles markdown-like formatting
-    const lines = content.split('\n');
-    
-    return lines.map((line, idx) => {
-      // Headers
-      if (line.startsWith('## ')) {
-        return <h3 key={idx} style={{ color: 'var(--primary)', marginTop: '1.5rem', marginBottom: '0.75rem' }}>{line.substring(3)}</h3>;
-      }
-      if (line.startsWith('# ')) {
-        return <h2 key={idx} style={{ color: 'var(--primary)', marginTop: '2rem', marginBottom: '1rem' }}>{line.substring(2)}</h2>;
-      }
-      
-      // Bold
-      if (line.includes('**')) {
-        const parts = line.split(/\*\*(.*?)\*\*/g);
-        return <p key={idx} style={{ margin: '0.75rem 0', color: 'var(--text)', lineHeight: '1.6' }}>
-          {parts.map((part, partIdx) => 
-            partIdx % 2 === 1 ? <strong key={partIdx}>{part}</strong> : part
-          )}
-        </p>;
-      }
-      
-      // Code blocks
-      if (line.startsWith('```')) {
-        // Find closing ```
-        let endIdx = idx + 1;
-        while (endIdx < lines.length && !lines[endIdx].startsWith('```')) {
-          endIdx++;
-        }
-        const codeContent = lines.slice(idx + 1, endIdx).join('\n');
-        
-        // Skip the closing ``` line
-        const skipLines = endIdx - idx + 1;
-        
-        return (
-          <div key={idx} style={{ margin: '1rem 0', overflowX: 'auto' }}>
-            <pre style={{
-              background: 'var(--card-bg)',
-              border: '1px solid var(--card-border)',
-              borderRadius: '8px',
-              padding: '1rem',
-              margin: 0,
-              fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-              fontSize: '0.88rem',
-              lineHeight: '1.5',
-              boxShadow: 'var(--shadow)'
-            }}>
-              <code>{codeContent}</code>
-            </pre>
-            {/* Skip the next lines we have already processed */}
-            {Array.from({ length: skipLines - 1 }).map((_, skipIdx) => <span key={idx + skipIdx + 1}></span>)}
-          </div>
-        );
-      }
-      
-      // List items
-      if (line.startsWith('- [ ]') || line.startsWith('- [x]') || line.trim().startsWith('- ')) {
-        const checkbox = line.startsWith('- [x]') ? '✓' : line.startsWith('- [ ]') ? '⬜' : '•';
-        const text = line.replace(/^- \[.*?\] /, '').replace(/^- /, '');
-        return <li key={idx} style={{ margin: '0.35rem 0', color: 'var(--text)', lineHeight: '1.6' }}>
-          <span style={{ marginRight: '0.5rem' }}>{checkbox}</span>
-          {text}
-        </li>;
-      }
-      
-      // Regular paragraph
-      if (line.trim() === '') {
-        return <div key={idx} style={{ height: '0.75rem' }}></div>;
-      }
-      
-      return <p key={idx} style={{ margin: '0.75rem 0', color: 'var(--text)', lineHeight: '1.6' }}>{line}</p>;
-    }).filter(el => el !== null);
-  };
 
   return (
     <div className="post-page">
@@ -109,7 +160,7 @@ const PostPage = () => {
       
       <article className="box-card">
         <header style={{ marginBottom: '1.5rem' }}>
-          <Link to="/#posts" className="text-link" style={{ fontSize: '0.9rem', fontWeight: 600 }}>
+          <Link to={allPostsTarget} className="text-link" style={{ fontSize: '0.9rem', fontWeight: 600 }}>
             ← All Posts
           </Link>
           <h1 style={{ margin: '0.5rem 0', color: 'var(--primary)' }}>{post.title}</h1>
@@ -117,7 +168,7 @@ const PostPage = () => {
         </header>
 
         <div className="post-content">
-          {renderContent(post.content)}
+          <MarkdownContent content={post.content} />
         </div>
 
         {post.tags && post.tags.length > 0 && (
@@ -143,6 +194,12 @@ const PostPage = () => {
             </div>
           </div>
         )}
+
+        <footer style={{ marginTop: '2rem', paddingTop: '1rem', borderTop: '1px solid var(--default-border)' }}>
+          <Link to={allPostsTarget} className="text-link" style={{ fontSize: '0.9rem', fontWeight: 600 }}>
+            ← All Posts
+          </Link>
+        </footer>
       </article>
 
       {relatedPosts.length > 0 && (
@@ -170,10 +227,6 @@ const PostPage = () => {
           </div>
         </section>
       )}
-
-      <div style={{ marginTop: '2rem' }}>
-        <Link to="/#posts" className="text-link">← Back to all posts</Link>
-      </div>
     </div>
   );
 };

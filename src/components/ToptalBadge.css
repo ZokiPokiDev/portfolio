@@ -1,0 +1,27 @@
+/* Toptal Badge - Fixed position at top right */
+
+.toptal-badge-container {
+  position: fixed;
+  top: 0;
+  right: 280px; /* Just to the right of sitemap-tree (278px + 2px) */
+  z-index: 1001;
+  transform: translateY(50%);
+  display: none;
+}
+
+/* Show only on desktop where sitemap is visible */
+@media (min-width: 1200px) {
+  .toptal-badge-container {
+    display: block;
+  }
+}
+
+/* Inner content styling - the badge has its own styles */
+.toptal-badge-container > div {
+  pointer-events: auto;
+}
+
+/* Make sure links in badge work */
+.toptal-badge-container a {
+  pointer-events: auto;
+}

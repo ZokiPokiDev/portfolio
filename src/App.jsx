@@ -10,6 +10,7 @@ import CaseStudiesPage from './pages/CaseStudiesPage';
 import PostPage from './pages/PostPage';
 import ThemeSwitch from './components/ThemeSwitch';
 import SitemapTree from "./components/SitemapTree";
+import ToptalBadge from "./components/ToptalBadge";
 import ParticleNetwork from "./components/ParticleNetwork";
 import Footer from "./sections/Footer";
 import { useCampaignTracking } from "./hooks/useCampaignTracking";
@@ -19,7 +20,8 @@ import './components/Gallery.css';
 import './components/LightboxModal.css';
 import './components/Collage.css';
 import './components/Grid.css';
-import './components/Flex.css'
+import './components/Flex.css';
+import './components/ToptalBadge.css';
 
 function CampaignTracker() {
   useCampaignTracking();
@@ -34,6 +36,7 @@ function App() {
         <ParticleNetwork />
         <ThemeSwitch />
         <SitemapTree />
+        <ToptalBadge />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/founder" element={<FounderPage />} />

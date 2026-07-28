@@ -1,232 +1,149 @@
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { posts } from '../base/posts';
 
-const Posts = () => {
-  const [startX, setStartX] = useState(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [wasDragged, setWasDragged] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const sliderRef = useRef(null);
-  const containerRef = useRef(null);
+const getVisiblePosts = () => {
+  if (typeof window === 'undefined') return 4;
 
-  // Number of visible posts at once
-  const visiblePosts = 4;
+  if (window.matchMedia('(max-width: 599px)').matches) return 1;
+  if (window.matchMedia('(max-width: 899px)').matches) return 2;
+  if (window.matchMedia('(max-width: 1199px)').matches) return 3;
+  return 4;
+};
+
+const ArrowIcon = ({ direction }) => (
+  <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+    <path d={direction === 'previous' ? 'M11.75 4.5 6.25 10l5.5 5.5' : 'm8.25 4.5 5.5 5.5-5.5 5.5'} />
+  </svg>
+);
+
+const Posts = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visiblePosts, setVisiblePosts] = useState(getVisiblePosts);
+  const viewportRef = useRef(null);
+
   const totalPosts = posts.length;
   const maxIndex = Math.max(0, totalPosts - visiblePosts);
+  const visibleEnd = Math.min(currentIndex + visiblePosts, totalPosts);
+  const progress = maxIndex === 0 ? 100 : ((currentIndex / maxIndex) * 100);
 
-  // Calculate slide position
-  const getSlidePosition = (slideIndex) => {
-    if (containerRef.current) {
-      const cardWidth = containerRef.current.querySelector('.post-slide')?.offsetWidth || 280;
-      const gap = 16; // px gap between slides
-      return -slideIndex * (cardWidth + gap);
-    }
-    return 0;
+  const getScrollStep = () => {
+    const viewport = viewportRef.current;
+    const card = viewport?.querySelector('.post-slide');
+    if (!viewport || !card) return 0;
+
+    const styles = window.getComputedStyle(viewport.querySelector('.posts-slider'));
+    return card.getBoundingClientRect().width + Number.parseFloat(styles.columnGap || styles.gap || 0);
   };
 
-  // Auto-advance every 6 seconds
+  const scrollToIndex = (index) => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const nextIndex = Math.min(Math.max(index, 0), maxIndex);
+    viewport.scrollTo({
+      left: Math.min(nextIndex * getScrollStep(), viewport.scrollWidth - viewport.clientWidth),
+      behavior: 'smooth',
+    });
+  };
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isDragging) {
-        setCurrentIndex(prev => (prev + 1) % (maxIndex + 1));
-      }
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [isDragging, maxIndex]);
+    const updateVisiblePosts = () => {
+      const nextVisiblePosts = getVisiblePosts();
+      setVisiblePosts(nextVisiblePosts);
+      setCurrentIndex((index) => Math.min(index, Math.max(0, totalPosts - nextVisiblePosts)));
+    };
 
-  // Mouse/touch drag handlers
-  const handleDragStart = (e) => {
-    // Only start drag if clicking on the slider track, not on a card
-    if (e.target.closest('.post-card, .post-slide')) {
-      return;
-    }
-    setIsDragging(true);
-    const clientX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
-    setStartX(clientX);
-    
-    if (sliderRef.current) {
-      sliderRef.current.style.transition = 'none';
-    }
-    e.preventDefault();
+    window.addEventListener('resize', updateVisiblePosts);
+    return () => window.removeEventListener('resize', updateVisiblePosts);
+  }, [totalPosts]);
+
+  const handleScroll = () => {
+    const viewport = viewportRef.current;
+    const step = getScrollStep();
+    if (!viewport || !step) return;
+
+    setCurrentIndex(Math.min(Math.round(viewport.scrollLeft / step), maxIndex));
   };
 
-  const handleDragMove = (e) => {
-    if (startX === null || !sliderRef.current) return;
-    
-    const clientX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
-    const diff = clientX - startX;
-    
-    // Calculate new position based on drag
-    const newPosition = getSlidePosition(currentIndex) + diff;
-    sliderRef.current.style.transform = `translateX(${newPosition}px)`;
-  };
-
-  const handleDragEnd = (e) => {
-    if (startX === null || !sliderRef.current) return;
-    
-    const clientX = e.type === 'mouseup' ? e.clientX : e.changedTouches[0].clientX;
-    const diff = startX - clientX; // Positive = swipe left, negative = swipe right
-    
-    const postWidth = containerRef.current?.querySelector('.post-slide')?.offsetWidth || 280;
-    const slideWidth = postWidth + 16;
-    const threshold = slideWidth / 3; // Swipe threshold
-
-    let newIndex = currentIndex;
-    
-    if (Math.abs(diff) > threshold) {
-      // Swipe left (next)
-      if (diff > 0 && currentIndex < maxIndex) {
-        newIndex = currentIndex + 1;
-      }
-      // Swipe right (previous)
-      else if (diff < 0 && currentIndex > 0) {
-        newIndex = currentIndex - 1;
-      }
+  const handleKeyDown = (event) => {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      scrollToIndex(currentIndex - 1);
     }
 
-    setCurrentIndex(newIndex);
-    setIsDragging(false);
-    setWasDragged(true);
-    setStartX(null);
-    
-    if (sliderRef.current) {
-      sliderRef.current.style.transition = 'transform 0.3s ease';
-    }
-    
-    // Clear the dragged flag after a short delay so next click works
-    setTimeout(() => setWasDragged(false), 100);
-  };
-
-  // Navigation buttons
-  const goToPrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
-  const goToNext = () => {
-    if (currentIndex < maxIndex) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  // Key navigation
-  const handleKeyDown = (e) => {
-    if (e.key === 'ArrowLeft') {
-      goToPrev();
-    } else if (e.key === 'ArrowRight') {
-      goToNext();
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      scrollToIndex(currentIndex + 1);
     }
   };
 
   return (
-    <section 
-      id="posts" 
-      className="posts-section"
-      onKeyDown={handleKeyDown}
-      tabIndex={0}
-      aria-label="Posts slider"
-    >
+    <section id="posts" className="posts-section" aria-labelledby="posts-heading">
       <div className="posts-header">
         <div className="posts-title">
-          <h2>Posts</h2>
+          <h2 id="posts-heading">Posts</h2>
           <p>Technical insights and learnings from real projects</p>
         </div>
-        <div className="posts-nav">
-          <button 
-            type="button" 
-            className="slider-nav prev"
-            onClick={goToPrev}
-            disabled={currentIndex === 0}
-            aria-label="Previous posts"
-          >
-            ‹
-          </button>
-          <span className="posts-counter">
-            {currentIndex + 1}-{Math.min(currentIndex + visiblePosts, totalPosts)} of {totalPosts}
+
+        <div className="posts-nav" aria-label="Post navigation">
+          <span className="posts-counter" aria-live="polite">
+            <strong>{currentIndex + 1}–{visibleEnd}</strong>
+            <span>of {totalPosts}</span>
           </span>
-          <button 
-            type="button" 
-            className="slider-nav next"
-            onClick={goToNext}
-            disabled={currentIndex >= maxIndex}
-            aria-label="Next posts"
-          >
-            ›
-          </button>
+          <div className="posts-nav-buttons">
+            <button
+              type="button"
+              className="slider-nav"
+              onClick={() => scrollToIndex(currentIndex - 1)}
+              disabled={currentIndex === 0}
+              aria-label="Show previous posts"
+            >
+              <ArrowIcon direction="previous" />
+            </button>
+            <button
+              type="button"
+              className="slider-nav"
+              onClick={() => scrollToIndex(currentIndex + 1)}
+              disabled={currentIndex >= maxIndex}
+              aria-label="Show next posts"
+            >
+              <ArrowIcon direction="next" />
+            </button>
+          </div>
         </div>
       </div>
 
-      <div 
+      <div className="posts-progress" aria-hidden="true">
+        <span className="posts-progress-value" style={{ width: `${progress}%` }} />
+      </div>
+
+      <div
         className="posts-slider-container"
-        ref={containerRef}
+        ref={viewportRef}
+        onScroll={handleScroll}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+        data-posts-slider
+        role="region"
+        aria-label="Posts carousel. Use the arrow keys or navigation buttons to browse."
       >
-        <div
-          className="posts-slider"
-          ref={sliderRef}
-          style={{
-            transform: `translateX(${getSlidePosition(currentIndex)}px)`,
-            transition: isDragging ? 'none' : 'transform 0.3s ease'
-          }}
-          onMouseDown={handleDragStart}
-          onMouseMove={handleDragMove}
-          onMouseUp={handleDragEnd}
-          onMouseLeave={handleDragEnd}
-          onTouchStart={handleDragStart}
-          onTouchMove={handleDragMove}
-          onTouchEnd={handleDragEnd}
-          onClick={(e) => {
-            // Prevent click on slider track from navigating
-            if (e.target === e.currentTarget) {
-              e.preventDefault();
-            }
-          }}
-        >
+        <div className="posts-slider">
           {posts.map((post) => (
-            <article 
-              key={post.id} 
-              className="post-slide"
-              style={{
-                opacity: isDragging ? 0.8 : 1,
-                cursor: isDragging ? 'grabbing' : 'pointer'
-              }}
-            >
-              <Link 
-                to={`/posts/${post.slug}`}
-                className="post-card"
-                onClick={(e) => {
-                  if (isDragging || wasDragged) {
-                    e.preventDefault();
-                    return false;
-                  }
-                }}
-              >
+            <article key={post.id} className="post-slide">
+              <Link to={`/posts/${post.slug}`} className="post-card">
                 <div className="post-card-content">
                   <h3 className="post-title">{post.title}</h3>
                   <p className="post-excerpt">{post.excerpt}</p>
                   <span className="post-read-more">
                     Read more
-                    <span className="post-arrow">→</span>
+                    <span className="post-arrow" aria-hidden="true">→</span>
                   </span>
                 </div>
               </Link>
             </article>
           ))}
         </div>
-      </div>
-
-      {/* Progress indicator dots */}
-      <div className="slider-dots">
-        {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-          <button
-            key={index}
-            type="button"
-            className={`dot ${currentIndex === index ? 'active' : ''}`}
-            onClick={() => setCurrentIndex(index)}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
       </div>
     </section>
   );
