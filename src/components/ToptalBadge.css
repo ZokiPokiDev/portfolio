@@ -2,17 +2,29 @@
 
 .toptal-badge-container {
   position: fixed;
-  top: -100px;
-  right: 320px; /* Just to the right of sitemap-tree (278px + 2px) */
+  top: 0;
+  right: 10px;
   z-index: 1001;
   transform: translateY(50%);
-  display: none;
+  display: block;
 }
 
-/* Show only on desktop where sitemap is visible */
+/* On desktop, position just to the right of sitemap-tree */
 @media (min-width: 1200px) {
   .toptal-badge-container {
-    display: block;
+    right: 280px;
+  }
+}
+
+/* On very small screens, scale down and adjust position */
+@media (max-width: 380px) {
+  .toptal-badge-container {
+    right: 5px;
+  }
+  
+  .toptal-badge-container > div {
+    transform: scale(0.8);
+    transform-origin: top right;
   }
 }
 
@@ -24,4 +36,10 @@
 /* Make sure links in badge work */
 .toptal-badge-container a {
   pointer-events: auto;
+}
+
+/* Ensure badge doesn't get cut off */
+.toptal-badge-container {
+  max-width: 220px;
+  overflow: visible;
 }
