@@ -4,6 +4,11 @@
   margin-bottom: 3rem;
   padding-bottom: 1.5rem;
   position: relative;
+  scroll-margin-top: 1.5rem;
+}
+
+.posts-section-header-wrapper {
+  position: relative;
 }
 
 .posts-header {
@@ -86,6 +91,7 @@
   overflow: hidden;
   width: 100%;
   margin: 0 auto;
+  min-height: 200px;
 }
 
 /* Hide scrollbar but allow scrolling */
@@ -111,6 +117,7 @@
   flex: 0 0 auto;
   width: calc(25% - 0.75rem);
   min-width: 220px;
+  height: 220px;
   transition: transform 0.16s ease, opacity 0.16s ease;
 }
 
@@ -118,6 +125,7 @@
 .post-card {
   display: block;
   height: 100%;
+  min-height: 180px;
   border: 1px solid var(--card-border);
   border-radius: 8px;
   background: var(--card-bg);
@@ -126,6 +134,7 @@
   text-decoration: none;
   transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
   padding: 1.2rem;
+  pointer-events: auto;
 }
 
 .post-card:hover,

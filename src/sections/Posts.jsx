@@ -5,6 +5,7 @@ import { posts } from '../base/posts';
 const Posts = () => {
   const [startX, setStartX] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [wasDragged, setWasDragged] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const sliderRef = useRef(null);
   const containerRef = useRef(null);
@@ -36,6 +37,10 @@ const Posts = () => {
 
   // Mouse/touch drag handlers
   const handleDragStart = (e) => {
+    // Only start drag if clicking on the slider track, not on a card
+    if (e.target.closest('.post-card, .post-slide')) {
+      return;
+    }
     setIsDragging(true);
     const clientX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
     setStartX(clientX);
@@ -43,6 +48,7 @@ const Posts = () => {
     if (sliderRef.current) {
       sliderRef.current.style.transition = 'none';
     }
+    e.preventDefault();
   };
 
   const handleDragMove = (e) => {
@@ -81,11 +87,15 @@ const Posts = () => {
 
     setCurrentIndex(newIndex);
     setIsDragging(false);
+    setWasDragged(true);
     setStartX(null);
     
     if (sliderRef.current) {
       sliderRef.current.style.transition = 'transform 0.3s ease';
     }
+    
+    // Clear the dragged flag after a short delay so next click works
+    setTimeout(() => setWasDragged(false), 100);
   };
 
   // Navigation buttons
@@ -166,6 +176,12 @@ const Posts = () => {
           onTouchStart={handleDragStart}
           onTouchMove={handleDragMove}
           onTouchEnd={handleDragEnd}
+          onClick={(e) => {
+            // Prevent click on slider track from navigating
+            if (e.target === e.currentTarget) {
+              e.preventDefault();
+            }
+          }}
         >
           {posts.map((post) => (
             <article 
@@ -180,8 +196,9 @@ const Posts = () => {
                 to={`/posts/${post.slug}`}
                 className="post-card"
                 onClick={(e) => {
-                  if (isDragging) {
+                  if (isDragging || wasDragged) {
                     e.preventDefault();
+                    return false;
                   }
                 }}
               >
