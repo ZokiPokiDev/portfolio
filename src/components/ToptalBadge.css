@@ -1,19 +1,43 @@
-/* Modern Compact Toptal Badge */
+/* Smart Responsive Toptal Badge */
 
-.toptal-badge-link {
+/* === FULL BADGE (Desktop) ==== */
+.toptal-badge-full {
+  position: fixed;
+  top: 0;
+  right: 280px; /* Just to the right of sitemap-tree (278px) */
+  z-index: 1001;
+  transform: translateY(50%);
+  display: none;
+  pointer-events: auto;
+}
+
+/* Show full badge on desktop */
+@media (min-width: 1200px) {
+  .toptal-badge-full {
+    display: block;
+  }
+  
+  .toptal-badge-link.compact {
+    display: none;
+  }
+}
+
+/* === COMPACT BADGE (Mobile Portrait) ==== */
+.toptal-badge-link.compact {
   position: fixed;
   top: 1.2em;
   right: 1.2em;
   z-index: 2000;
   text-decoration: none;
   transition: transform 0.16s ease, box-shadow 0.16s ease;
+  display: block;
 }
 
-.toptal-badge-link:hover {
+.toptal-badge-link.compact:hover {
   transform: translateY(-1px);
 }
 
-.toptal-badge-link:active {
+.toptal-badge-link.compact:active {
   transform: translateY(0) scale(0.95);
 }
 
@@ -49,9 +73,9 @@
   letter-spacing: 0.04em;
 }
 
-/* On mobile, position slightly differently if needed */
+/* Mobile adjustments */
 @media (max-width: 600px) {
-  .toptal-badge-link {
+  .toptal-badge-link.compact {
     top: 0.8em;
     right: 0.8em;
   }
@@ -66,4 +90,15 @@
     width: 24px;
     height: 7px;
   }
+}
+
+/* Ensure inner content has pointer events */
+.toptal-badge-full > div,
+.toptal-badge-compact {
+  pointer-events: auto;
+}
+
+.toptal-badge-full a,
+.toptal-badge-compact a {
+  pointer-events: auto;
 }
