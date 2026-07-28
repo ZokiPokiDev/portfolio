@@ -3,8 +3,8 @@
 /* === FULL BADGE (Desktop) ==== */
 .toptal-badge-full {
   position: fixed;
-  top: 0;
-  right: 280px; /* Just to the right of sitemap-tree (278px) */
+  top: -100px;
+  right: 320px; /* Just to the right of sitemap-tree (278px) */
   z-index: 1001;
   transform: translateY(50%);
   display: none;
@@ -76,18 +76,18 @@
 /* Mobile adjustments */
 @media (max-width: 600px) {
   .toptal-badge-link.compact {
-    top: 0.8em;
-    right: 0.8em;
+    top: 2.0em;
+    right: 4.4em;
   }
   
   .toptal-badge-compact {
-    font-size: 0.85em;
+    font-size: 0.65em;
     padding: 0.45em 0.85em;
     gap: 0.4em;
   }
   
   .toptal-logo {
-    width: 24px;
+    width: 14px;
     height: 7px;
   }
 }
