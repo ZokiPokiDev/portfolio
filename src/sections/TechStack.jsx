@@ -166,9 +166,6 @@ const groupedTechStack = {
   ],
 };
 
-const technologyCount = Object.values(groupedTechStack)
-  .reduce((total, technologies) => total + technologies.length, 0);
-
 const TechStack = () => (
   <section id="tech-stack" className="tech-stack" aria-labelledby="tech-stack-title">
     <header className="section-head tech-stack-head">
@@ -177,7 +174,6 @@ const TechStack = () => (
         <h2 id="tech-stack-title">Tech Stack</h2>
         <p>Core technologies used across product engineering, infrastructure, security, and AI delivery.</p>
       </div>
-      <span className="tech-stack-count">{technologyCount} tools</span>
     </header>
 
     <div className="tech-stack-groups">

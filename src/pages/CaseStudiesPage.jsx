@@ -122,7 +122,8 @@ const CaseStudiesPage = () => {
       <header className="case-studies-header">
         <h1>Selected Delivery Experience</h1>
         <p className="header-subtitle">
-          Engineering context behind selected projects, framed honestly without invented metrics.
+          Engineering context behind selected projects, including the scope, constraints,
+          architecture, and delivery work involved.
         </p>
       </header>
 
@@ -199,9 +200,9 @@ const CaseStudiesPage = () => {
 
       <footer className="case-studies-footer">
         <p>Want to discuss a similar project for your business?</p>
-        <Link to="#lead-capture" className="cta-button">
+        <a href="/#lead-capture" className="cta-button">
           Get in Touch
-        </Link>
+        </a>
       </footer>
     </div>
   );

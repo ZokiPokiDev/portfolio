@@ -81,7 +81,7 @@ const FounderPage = () => {
           <h2>Connect</h2>
           <div className="social-links">
             <a 
-              href="https://www.linkedin.com/in/zoran-panev" 
+              href="https://www.linkedin.com/in/zoranpanev"
               target="_blank" 
               rel="noopener noreferrer"
               className="social-link"

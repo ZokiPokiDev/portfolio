@@ -59,10 +59,10 @@ const LeadCapture = () => {
           pending.push({ ...payload, created_at: new Date().toISOString() });
           localStorage.setItem("systempro_pending_leads", JSON.stringify(pending.slice(-20)));
         } catch {
-          // Local preview fallback is best-effort only.
+          // Best-effort local retention only; never surfaced to the prospect.
         }
         trackEvent("lead_form_error", { project_type: form.project_type });
-        setStatus("local");
+        setStatus("error");
       });
   }
 
@@ -160,8 +160,7 @@ const LeadCapture = () => {
           </button>
           <span className={`lead-status ${status}`}>
             {status === "sent" && "Request received. We will review it and reply shortly."}
-            {status === "local" && "Saved in this browser for local preview. Deploy to PHP to store server-side."}
-            {status === "error" && "Could not store the request. Email is still available below."}
+            {status === "error" && "We couldn't send your request right now. Please contact us directly by email and we'll reply shortly."}
           </span>
         </div>
       </form>

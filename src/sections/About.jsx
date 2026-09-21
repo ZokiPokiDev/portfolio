@@ -23,7 +23,8 @@ const About = () => (
       We design and integrate AI capabilities around existing business data and workflows, including
       RAG/CAG knowledge assistants, document intelligence, LLM-powered search, internal support tools,
       and API-based AI features. The emphasis is on grounded context, controlled data access,
-      evaluation, human review where appropriate, and integration with the systems teams already operate.
+      evaluation, human review where appropriate, and integration with the systems your teams already
+      use.
     </p>
     <br />
 

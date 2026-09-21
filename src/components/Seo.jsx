@@ -9,9 +9,9 @@ import { useEffect } from 'react';
  * Note: For best SEO results, combine this with server-side rendering or prerendering
  * as initial HTML will still be shared without these tags.
  */
-const Seo = ({ 
-  title = 'Business Modernization & AI Integration | SystemPro Tech',
-  description = 'Modernize legacy software, automate business workflows, and implement secure AI and RAG solutions with an experienced European engineering partner.',
+const Seo = ({
+  title = 'Senior Software Engineering, Modernization & AI Integration | SystemPro Tech',
+  description = 'Founder-led B2B software engineering consultancy for application modernization, SaaS rescue work, APIs and integrations, cloud delivery, and practical AI/RAG implementation.',
   canonical = 'https://www.system-pro.tech/',
   ogTitle,
   ogDescription,
@@ -193,11 +193,11 @@ export const seoConfig = {
       ogUrl: 'https://www.system-pro.tech/founder',
     },
     'case-studies': {
-      title: 'Case Studies | SystemPro Tech',
-      description: 'Explore our technical case studies showcasing AI integration, legacy modernization, and digital transformation projects with measurable outcomes.',
+      title: 'Selected Delivery Experience | SystemPro Tech',
+      description: 'Selected delivery experience across automotive, SaaS, recruitment, and AI platforms, with the engineering context behind each project.',
       canonical: 'https://www.system-pro.tech/case-studies',
-      ogTitle: 'Technical Case Studies | SystemPro Tech',
-      ogDescription: 'Real-world examples of AI integration, software modernization, and business automation projects with concrete engineering details and measurable results.',
+      ogTitle: 'Selected Delivery Experience | SystemPro Tech',
+      ogDescription: 'Engineering context behind selected projects across automotive, SaaS, recruitment, and AI delivery.',
       ogUrl: 'https://www.system-pro.tech/case-studies',
     },
   },
