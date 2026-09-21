@@ -148,25 +148,15 @@ export const seoConfig = {
   },
   // Location pages
   locations: {
-    'austria-ai-integration': {
-      title: 'AI Integration Austria | SystemPro Tech',
-      description: 'Expert AI integration and software modernization services in Austria. Connect with our Wels office for European AI and legacy system transformation projects.',
-      canonical: 'https://www.system-pro.tech/locations/austria-ai-integration',
-    },
     'dach-software-modernization': {
       title: 'DACH Software Modernization | SystemPro Tech',
       description: 'Software modernization services for the DACH region (Germany, Austria, Switzerland). Legacy system transformation and digital transformation expertise.',
       canonical: 'https://www.system-pro.tech/locations/dach-software-modernization',
     },
-    'germany-business-automation': {
-      title: 'Business Automation Germany | SystemPro Tech',
-      description: 'Business process automation and workflow optimization services in Germany. Automate operations, reduce costs, and improve efficiency with our expert team.',
-      canonical: 'https://www.system-pro.tech/locations/germany-business-automation',
-    },
-    'switzerland-ai-consulting': {
-      title: 'AI Consulting Switzerland | SystemPro Tech',
-      description: 'AI consulting and strategy services in Switzerland. Expert guidance on AI adoption, implementation, and integration for Swiss businesses.',
-      canonical: 'https://www.system-pro.tech/locations/switzerland-ai-consulting',
+    'macedonia-balkan': {
+      title: 'Macedonia Balkan IT Services | SystemPro Tech',
+      description: 'Software development and IT services hub in Macedonia serving the Balkan region. Expert engineering and digital transformation solutions.',
+      canonical: 'https://www.system-pro.tech/locations/macedonia-balkan',
     },
   },
   // Regional campaign pages

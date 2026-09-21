@@ -69,6 +69,7 @@ import firebaseLogo from '../assets/firebase.svg';
 import windsurfLogo from '../assets/windsurf.svg';
 import zedindustriesLogo from '../assets/zedindustries.svg';
 import opencodeLogo from '../assets/opencode.svg';
+import './TechStack.css';
 
 const groupedTechStack = {
   "Full-Stack": [
@@ -153,32 +154,49 @@ const groupedTechStack = {
   ],
 };
 
+const technologyCount = Object.values(groupedTechStack)
+  .reduce((total, technologies) => total + technologies.length, 0);
+
 const TechStack = () => (
-  <section id="tech-stack" className="tech-stack">
-    <h2>Tech Stack</h2>
-    {Object.entries(groupedTechStack).map(([group, techs]) => (
-      techs.length > 0 && (
-        <div key={group} style={{ marginBottom: '2em' }}>
-          <h3 style={{ marginBottom: '0.5em', marginTop: '1.5em' }}>{group}</h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5em' }}>
-            {techs.map((tech) => (
-              <div key={tech.name} style={{ textAlign: 'center' }}>
-                <img src={tech.logo} alt={tech.name} style={{ width: '40px', height: '40px', marginBottom: '0.5em' }} />
-                <div>{tech.name}</div>
-              </div>
-            ))}
+  <section id="tech-stack" className="tech-stack" aria-labelledby="tech-stack-title">
+    <header className="section-head tech-stack-head">
+      <div>
+        <p className="section-kicker">Stack and tooling</p>
+        <h2 id="tech-stack-title">Tech Stack</h2>
+        <p>Tools I use across product engineering, infrastructure, security, and AI.</p>
+      </div>
+      <span className="tech-stack-count">{technologyCount} tools</span>
+    </header>
+
+    <div className="tech-stack-groups">
+      {Object.entries(groupedTechStack).map(([group, technologies]) => (
+        <article
+          className={`tech-stack-group ${group === 'Full-Stack' ? 'tech-stack-group-wide' : ''}`}
+          key={group}
+        >
+          <div className="tech-stack-group-head">
+            <h3>{group}</h3>
+            <span>{technologies.length}</span>
           </div>
-          <div className='line-separator' style={{ marginTop: '1.5em' }}></div>
-        </div>
-      )
-    ))}
-    <div className='spacer'></div>
-    <div className='used-from'>
-      <p>Used from</p>
-      <a href="https://simpleicons.org/" target="_blank" rel="noopener noreferrer">
-        <img src={simpleiconsLogo} alt="Simple Icons" style={{ width: '40px', height: '40px', marginBottom: '0.5em' }} />
-      </a>
+          <ul className="tech-stack-icons" aria-label={`${group} technologies`}>
+            {technologies.map((technology) => (
+              <li className="tech-stack-item" key={technology.name}>
+                <img src={technology.logo} alt="" loading="lazy" aria-hidden="true" />
+                <span>{technology.name}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
     </div>
+
+    <p className="tech-stack-source">
+      <span>Icon set</span>
+      <a href="https://simpleicons.org/" target="_blank" rel="noopener noreferrer">
+        <img src={simpleiconsLogo} alt="" aria-hidden="true" />
+        Simple Icons
+      </a>
+    </p>
   </section>
 );
 

@@ -102,52 +102,355 @@
 
 .signal-feed {
     display: grid;
-    gap: 0.65rem;
+    gap: 0;
     margin-top: 0.85rem;
+    padding: 0;
+    overflow: hidden;
+}
+
+.rail-feed-group {
+    display: grid;
+    gap: 0.55rem;
     padding: 0.85rem;
 }
 
-.signal-card {
+.live-feed-group {
+    border-top: 1px solid var(--card-border);
+    background: color-mix(in srgb, var(--card-bg) 72%, transparent);
+}
+
+.featured-link-list,
+.signal-list {
     display: grid;
-    gap: 0.16rem;
-    padding: 0.75rem;
+    gap: 0.45rem;
+}
+
+.feed-accordion-list {
+    display: grid;
+    gap: 0.42rem;
+}
+
+.feed-accordion {
     border: 1px solid var(--card-border);
     border-radius: 8px;
     background: var(--card-bg);
-    box-shadow: 0 8px 18px rgba(31, 41, 55, 0.06);
+    overflow: hidden;
+}
+
+.feed-accordion summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 0.46rem;
+    min-height: 2.35rem;
+    padding: 0.52rem 0.64rem;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 0.76rem;
+    font-weight: 850;
+    list-style: none;
+}
+
+.feed-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.feed-accordion summary::after {
+    content: "+";
+    color: var(--primary);
+    font-size: 0.92rem;
+    font-weight: 900;
+}
+
+.feed-accordion[open] summary::after {
+    content: "−";
+}
+
+.feed-accordion summary:hover,
+.feed-accordion summary:focus-visible {
+    background: var(--hover-bg);
+    outline: none;
+}
+
+.feed-group-count {
+    min-width: 1.35rem;
+    padding: 0.1rem 0.32rem;
+    border-radius: 999px;
+    background: var(--secondary);
+    color: var(--muted-text);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.62rem;
+    text-align: center;
+}
+
+.feed-accordion .featured-link-list,
+.feed-accordion .signal-list {
+    padding: 0 0.42rem 0.42rem;
+}
+
+.featured-link-card {
+    position: relative;
+    display: grid;
+    gap: 0.26rem;
+    min-height: 4.15rem;
+    padding: 0.66rem 2rem 0.66rem 0.72rem;
+    border: 1px solid color-mix(in srgb, var(--primary) 20%, var(--card-border));
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--primary) 5%, var(--card-bg));
     transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
 }
 
-.signal-card:hover,
-.signal-card:focus {
+.featured-link-card[data-content-type="regional"] {
+    border-color: rgba(15, 118, 110, 0.28);
+    background: rgba(15, 118, 110, 0.055);
+}
+
+.featured-link-card[data-content-type="regional"] .feed-kind,
+.featured-link-card[data-content-type="regional"] .feed-arrow {
+    color: #0f766e;
+}
+
+.featured-link-card[data-content-type="post"] {
+    border-color: rgba(124, 58, 237, 0.24);
+    background: rgba(124, 58, 237, 0.045);
+}
+
+.featured-link-card[data-content-type="post"] .feed-kind,
+.featured-link-card[data-content-type="post"] .feed-arrow {
+    color: #7c3aed;
+}
+
+.featured-link-card:hover,
+.featured-link-card:focus {
     color: var(--text);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     border-color: var(--primary);
     box-shadow: var(--shadow-hover-darker);
     outline: none;
 }
 
-.signal-card:active {
-    transform: translateY(0) scale(0.985);
-}
-
-.signal-card span {
+.feed-kind {
+    width: fit-content;
     color: var(--primary);
-    font-size: 0.72rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.66rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
 }
 
-.signal-card strong {
+.featured-link-card strong {
     color: var(--text);
-    font-size: 0.92rem;
+    font-size: 0.86rem;
     line-height: 1.25;
 }
 
-.signal-card small {
+.feed-arrow {
+    position: absolute;
+    top: 50%;
+    right: 0.72rem;
+    color: var(--primary);
+    font-size: 1rem;
+    transform: translateY(-50%);
+}
+
+.rail-heading-live {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.feed-mode {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.32rem;
+    padding: 0.18rem 0.4rem;
+    border-radius: 999px;
+    background: rgba(245, 158, 11, 0.12);
+    color: #b45309;
+    font-size: 0.58rem;
+    letter-spacing: 0.05em;
+}
+
+.feed-mode.live {
+    background: rgba(16, 185, 129, 0.12);
+    color: #047857;
+}
+
+.live-indicator {
+    width: 0.46rem;
+    height: 0.46rem;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 13%, transparent);
+}
+
+.provider-accordion summary {
+    grid-template-columns: 1.55rem minmax(0, 1fr) auto auto;
+}
+
+.provider-mark {
+    display: inline-grid;
+    place-items: center;
+    width: 1.45rem;
+    height: 1.45rem;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--primary) 12%, var(--card-bg));
+    color: var(--primary);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.62rem;
+    font-weight: 900;
+}
+
+.provider-mark-github {
+    background: rgba(124, 58, 237, 0.12);
+    color: #7c3aed;
+}
+
+.provider-mark-reddit,
+.provider-mark-hackernews {
+    background: rgba(15, 118, 110, 0.12);
+    color: #0f766e;
+}
+
+.provider-name {
+    display: grid;
+    gap: 0.06rem;
+}
+
+.provider-name small {
     color: var(--muted-text);
-    line-height: 1.35;
+    font-size: 0.57rem;
+    font-weight: 650;
+    letter-spacing: 0.02em;
+}
+
+.provider-accordion[data-feed-mode="curated"] .feed-group-count {
+    color: #b45309;
+}
+
+.signal-list-item {
+    display: grid;
+    grid-template-columns: 0.48rem minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 0.55rem;
+    padding: 0.52rem 0.16rem;
+    border-radius: 7px;
+    transition: background 0.16s ease, transform 0.16s ease;
+}
+
+.signal-list-item + .signal-list-item {
+    border-top: 1px solid var(--card-border);
+    border-radius: 0;
+}
+
+.signal-list-item:hover,
+.signal-list-item:focus {
+    color: var(--text);
+    background: var(--hover-bg);
+    transform: translateX(2px);
+    outline: none;
+}
+
+.signal-marker {
+    width: 0.42rem;
+    height: 0.42rem;
+    margin-top: 0.24rem;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+.signal-list-item[data-content-type="repository"] .signal-marker {
+    background: #7c3aed;
+}
+
+.signal-list-item[data-content-type="discussion"] .signal-marker {
+    background: #0f766e;
+}
+
+.signal-list-item[data-content-type="post"] .signal-marker {
+    background: #2563eb;
+}
+
+.signal-list-item[data-content-type="ad"] .signal-marker {
+    background: #d97706;
+}
+
+.signal-list-item[data-content-type="repository"] .signal-meta {
+    color: #7c3aed;
+}
+
+.signal-list-item[data-content-type="discussion"] .signal-meta {
+    color: #0f766e;
+}
+
+.signal-list-item[data-content-type="post"] .signal-meta {
+    color: #2563eb;
+}
+
+.signal-list-item[data-content-type="ad"] .signal-meta {
+    color: #b45309;
+}
+
+.signal-copy {
+    display: grid;
+    gap: 0.16rem;
+    min-width: 0;
+}
+
+.signal-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.36rem;
+    color: var(--muted-text);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.64rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.signal-meta time::before {
+    content: "·";
+    margin-right: 0.36rem;
+}
+
+.signal-copy strong {
+    display: -webkit-box;
+    overflow: hidden;
+    color: var(--text);
+    font-size: 0.82rem;
+    line-height: 1.28;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.signal-copy small {
+    color: var(--muted-text);
+    font-size: 0.65rem;
+    line-height: 1.25;
+}
+
+.signal-external {
+    color: var(--muted-text);
+    font-size: 0.76rem;
+}
+
+.all-signals-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.1rem;
+    padding: 0.52rem 0.16rem 0.08rem;
+    color: var(--primary) !important;
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+.all-signals-link:hover,
+.all-signals-link:focus {
+    text-decoration: underline;
+    outline: none;
 }
 
 .rail-cta {
@@ -155,6 +458,8 @@
     align-items: center;
     justify-content: center;
     min-height: 2.4rem;
+    width: 100%;
+    margin-top: 0.75rem;
     padding: 0.55rem 0.8rem;
     border-radius: 8px;
     background: var(--primary);

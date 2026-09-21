@@ -4,8 +4,6 @@ declare(strict_types=1);
 function systempro_env_candidates(): array
 {
     return [
-        __DIR__ . '/.env',
-        dirname(__DIR__) . '/.env',
         dirname(__DIR__, 2) . '/.env',
     ];
 }

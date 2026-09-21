@@ -105,6 +105,7 @@ const LeadCapture = () => {
           <select name="region" value={form.region} onChange={updateField}>
             <option value="">Select region</option>
             <option value="DACH">DACH</option>
+            <option value="Balkan">Balkan</option>
             <option value="GCC">GCC</option>
             <option value="UK">UK</option>
             <option value="EU">EU / Remote</option>

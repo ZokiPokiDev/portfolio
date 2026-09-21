@@ -1,5 +1,11 @@
 # React + Vite
 
+## Local development
+
+Keep runtime credentials in the repository-root `.env` (copy `.env.example` as a starting point). Do not place credentials under `public/`, because Vite copies that directory into the browser build.
+
+Run `npm run dev` to start both the PHP API on port 8787 and Vite. Vite proxies `/api` requests to PHP, so the live-signal feed uses the configured providers during development.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

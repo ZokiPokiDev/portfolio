@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 import { useSignalFeed } from "../hooks/useSignalFeed";
+import {
+    formatEngagement,
+    formatFeedDate,
+    getContentTypeLabel,
+    groupExternalFeedItems,
+    groupInternalFeedItems,
+    ITEMS_PER_PROVIDER,
+    SIGNAL_FEED_LIMIT,
+} from "../services/signalFeed";
 import "./SitemapTree.css";
 
 const treeData = [
@@ -55,6 +64,13 @@ const treeData = [
     { id: "locations", label: "Locations", link: "#locations" },
     { id: "contact", label: "Contact", link: "#contact" },
 ];
+
+const providerMarks = {
+    github: "GH",
+    hackernews: "Y",
+    linkedin: "in",
+    reddit: "r/",
+};
 
 function TreeNode({ node, expanded, toggle }) {
     const hasChildren = node.children && node.children.length > 0;
@@ -131,7 +147,12 @@ function TreeNode({ node, expanded, toggle }) {
 
 const SitemapTree = () => {
     const [expanded, setExpanded] = useState({});
-    const { items: feedItems } = useSignalFeed(5);
+    const { items: feedItems, status } = useSignalFeed(SIGNAL_FEED_LIMIT);
+    const internalGroups = groupInternalFeedItems(feedItems);
+    const providerGroups = groupExternalFeedItems(feedItems);
+    const firstLiveGroupIndex = providerGroups.findIndex((group) =>
+        group.items.some((item) => !item.fallback_only),
+    );
 
     const toggle = (id) => {
         setExpanded((prev) => ({
@@ -155,25 +176,113 @@ const SitemapTree = () => {
                     ))}
                 </ul>
             </nav>
-            <section className="signal-feed" aria-label="Developer signal feed">
-                <div className="rail-heading">Signal Feed</div>
-                {feedItems.map((item) => (
-                    <a
-                        className="signal-card"
-                        href={item.href}
-                        target={item.href.startsWith("#") || item.href.startsWith("/") ? undefined : "_blank"}
-                        rel={item.href.startsWith("#") || item.href.startsWith("/") ? undefined : "noopener noreferrer"}
-                        key={item.title}
-                    >
-                        <span>{item.source}</span>
-                        <strong>{item.title}</strong>
-                        <small>{item.text}</small>
+            <section className="signal-feed" aria-label="SystemPro pages and live signals">
+                {internalGroups.length > 0 && (
+                    <div className="rail-feed-group">
+                        <div className="rail-heading">Explore SystemPro</div>
+                        <div className="feed-accordion-list">
+                            {internalGroups.map((group) => (
+                                <details className="feed-accordion" open={group.open || undefined} key={group.id}>
+                                    <summary>
+                                        <span>{group.label}</span>
+                                        <span className="feed-group-count">{group.items.length}</span>
+                                    </summary>
+                                    <div className="featured-link-list">
+                                        {group.items.map((item) => (
+                                            <a
+                                                className="featured-link-card"
+                                                data-content-type={item.content_type}
+                                                href={item.href}
+                                                key={`${item.href}-${item.title}`}
+                                            >
+                                                <span className="feed-kind">{getContentTypeLabel(item)}</span>
+                                                <strong>{item.title}</strong>
+                                                <span className="feed-arrow" aria-hidden="true">→</span>
+                                            </a>
+                                        ))}
+                                    </div>
+                                </details>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                <div className="rail-feed-group live-feed-group">
+                    <div className="rail-heading rail-heading-live">
+                        <span>Live signals</span>
+                        <span className={`feed-mode ${status}`} role="status">
+                            <span className="live-indicator" aria-hidden="true" />
+                            {status === "live" ? "Live" : status === "loading" ? "Loading" : "Curated"}
+                        </span>
+                    </div>
+                    <div className="feed-accordion-list provider-accordion-list">
+                        {providerGroups.map((group, groupIndex) => {
+                            const isCurated = group.items.every((item) => item.fallback_only);
+
+                            return (
+                                <details
+                                    className="feed-accordion provider-accordion"
+                                    data-feed-mode={isCurated ? "curated" : "live"}
+                                    open={groupIndex === Math.max(0, firstLiveGroupIndex) || undefined}
+                                    key={group.id}
+                                >
+                                    <summary>
+                                        <span className={`provider-mark provider-mark-${group.id}`} aria-hidden="true">
+                                            {providerMarks[group.id] || "•"}
+                                        </span>
+                                        <span className="provider-name">
+                                            {group.label}
+                                            <small>{isCurated ? "Curated link" : "Latest updates"}</small>
+                                        </span>
+                                        <span className="feed-group-count">{Math.min(group.items.length, ITEMS_PER_PROVIDER)}</span>
+                                    </summary>
+                                    <div className="signal-list">
+                                        {group.items.slice(0, ITEMS_PER_PROVIDER).map((item) => {
+                                            const date = formatFeedDate(item.published_at);
+                                            const engagement = formatEngagement(item.metrics);
+
+                                            return (
+                                                <a
+                                                    className="signal-list-item"
+                                                    data-content-type={item.content_type}
+                                                    href={item.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    key={`${item.href}-${item.title}`}
+                                                >
+                                                    <span className="signal-marker" aria-hidden="true" />
+                                                    <span className="signal-copy">
+                                                        <span className="signal-meta">
+                                                            <span>{getContentTypeLabel(item)}</span>
+                                                            {date && (
+                                                                <time
+                                                                    dateTime={item.published_at}
+                                                                    title={new Date(item.published_at).toLocaleString()}
+                                                                >
+                                                                    {date}
+                                                                </time>
+                                                            )}
+                                                        </span>
+                                                        <strong>{item.title}</strong>
+                                                        {engagement && <small>{engagement}</small>}
+                                                    </span>
+                                                    <span className="signal-external" aria-hidden="true">↗</span>
+                                                </a>
+                                            );
+                                        })}
+                                    </div>
+                                </details>
+                            );
+                        })}
+                    </div>
+                    <a className="all-signals-link" href="#live-signals">
+                        View all updates <span aria-hidden="true">→</span>
                     </a>
-                ))}
-                <a className="rail-cta" href="mailto:panev.zoran.te@gmail.com">
-                    Contact Zoran
-                </a>
+                </div>
             </section>
+            <a className="rail-cta" href="mailto:panev.zoran.te@gmail.com">
+                Contact Zoran
+            </a>
         </aside>
     );
 };

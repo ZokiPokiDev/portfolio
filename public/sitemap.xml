@@ -58,22 +58,12 @@
 
   <!-- Location Pages -->
   <url>
-    <loc>https://www.system-pro.tech/locations/austria-ai-integration</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://www.system-pro.tech/locations/dach-software-modernization</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.system-pro.tech/locations/germany-business-automation</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.system-pro.tech/locations/switzerland-ai-consulting</loc>
+    <loc>https://www.system-pro.tech/locations/macedonia-balkan</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>

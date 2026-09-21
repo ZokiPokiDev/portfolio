@@ -1,38 +1,115 @@
 [
   {
-    "source": "LinkedIn / campaign",
+    "source": "Offer / Modernization",
+    "kind": "offer",
+    "content_type": "offer",
+    "origin": "internal",
+    "featured": true,
     "title": "Business modernization entry point",
     "text": "A clear first step for companies that need digitization, workflow automation, API integration, or AI adoption.",
     "href": "#packages"
   },
   {
     "source": "Build log",
+    "kind": "post",
+    "content_type": "post",
+    "origin": "internal",
     "title": "Production recovery and infrastructure notes",
     "text": "Plesk, Docker, certificates, memory pressure, nginx routing, and practical operations work for small business systems.",
     "href": "#get-in-touch"
   },
   {
     "source": "Offer / AI",
+    "kind": "offer",
+    "content_type": "offer",
+    "origin": "internal",
     "title": "RAG and document intelligence",
     "text": "Use company documents, support knowledge, PDFs, and project data as grounded context for internal AI assistants.",
     "href": "#modernization"
   },
   {
     "source": "Regional / DACH",
+    "kind": "regional",
+    "content_type": "regional",
+    "origin": "internal",
     "title": "Modernization audit for DACH teams",
     "text": "A focused first step for companies that need controlled delivery, documentation, and pragmatic modernization.",
     "href": "/dach-modernization"
   },
   {
+    "source": "Regional / GCC",
+    "kind": "regional",
+    "content_type": "regional",
+    "origin": "internal",
+    "title": "AI integration for GCC and Middle East teams",
+    "text": "Practical AI integration and modernization support for growing organizations across the GCC region.",
+    "href": "/gcc-ai-integration"
+  },
+  {
     "source": "Offer / Rescue",
-    "title": "Rescue sprint for unfinished SaaS apps",
-    "text": "Short scope support for products that need production fixes, frontend/backend triage, and delivery cleanup.",
+    "kind": "offer",
+    "content_type": "offer",
+    "origin": "internal",
+    "featured": true,
+    "title": "Senior rescue support for unfinished SaaS and web apps",
+    "text": "Senior-level support for products that need production fixes, frontend/backend triage, and delivery cleanup.",
     "href": "/uk-saas-rescue"
   },
   {
     "source": "Regional / Asia",
+    "kind": "regional",
+    "content_type": "regional",
+    "origin": "internal",
     "title": "English-first AI integration page",
     "text": "A broader Asia-facing page that stays in English until specific market response shows which language to localize next.",
     "href": "/asia-ai-integration"
+  },
+  {
+    "source": "GitHub",
+    "kind": "github",
+    "provider": "github",
+    "content_type": "repository",
+    "origin": "external",
+    "fallback_only": true,
+    "priority": 6,
+    "title": "Latest engineering activity",
+    "text": "Public repositories, experiments, and technical implementation notes.",
+    "href": "https://github.com/zokipokidev"
+  },
+  {
+    "source": "LinkedIn",
+    "kind": "social",
+    "provider": "linkedin",
+    "content_type": "post",
+    "origin": "external",
+    "fallback_only": true,
+    "priority": 6,
+    "title": "SystemPro company posts",
+    "text": "Company updates about modernization, integrations, software delivery, and applied AI.",
+    "href": "https://www.linkedin.com/company/systempro/"
+  },
+  {
+    "source": "Reddit",
+    "kind": "rss",
+    "provider": "reddit",
+    "content_type": "discussion",
+    "origin": "external",
+    "fallback_only": true,
+    "priority": 2,
+    "title": "AI community discussions",
+    "text": "Public discussions and emerging signals from the artificial intelligence community.",
+    "href": "https://www.reddit.com/r/artificial/"
+  },
+  {
+    "source": "Hacker News",
+    "kind": "hackernews",
+    "provider": "hackernews",
+    "content_type": "discussion",
+    "origin": "external",
+    "fallback_only": true,
+    "priority": 3,
+    "title": "Popular AI and software discussions",
+    "text": "Current highly ranked engineering discussions from the Hacker News community.",
+    "href": "https://news.ycombinator.com/news"
   }
 ]
