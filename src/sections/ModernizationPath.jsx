@@ -22,7 +22,7 @@ const tracks = [
 const ModernizationPath = () => (
   <section id="modernization" className="modernization-path">
     <div className="section-head">
-      <p className="section-kicker">From campaign click to delivery plan</p>
+      <p className="section-kicker">From first conversation to delivery plan</p>
       <h2>Modernize the business without hiding the engineering</h2>
       <p>
         The first conversation stays practical: what is slow today, what data already exists, what systems must stay,

@@ -72,8 +72,8 @@ const Projects = () => {
         <section id="projects" className="projects">
             <div className="projects-head">
                 <div>
-                    <h2>Projects</h2>
-                    <p>Filter the long list, then expand the work that matters for your current context.</p>
+                    <h2>Selected Projects & Delivery Experience</h2>
+                    <p>Filter the list, then expand the work that matters for your current context.</p>
                 </div>
                 <div className="project-count">{filteredProjects.length} matched</div>
             </div>

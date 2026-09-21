@@ -69,11 +69,11 @@ const LeadCapture = () => {
   return (
     <section id="lead-capture" className="lead-capture">
       <div className="section-head">
-        <p className="section-kicker">Start with enough context</p>
-        <h2>Send a short project signal</h2>
+        <p className="section-kicker">Start with the problem</p>
+        <h2>Tell us what you need to improve</h2>
         <p>
-          This stores the request in the site metrics database so campaign responses can be reviewed
-          before a full CRM is needed.
+          Share a few details about your project, current bottleneck, or delivery goal. We will use this
+          context to prepare a focused first conversation.
         </p>
       </div>
 
@@ -156,10 +156,10 @@ const LeadCapture = () => {
 
         <div className="lead-submit-row">
           <button type="submit" disabled={status === "sending"}>
-            {status === "sending" ? "Sending..." : "Send project signal"}
+            {status === "sending" ? "Sending..." : "Discuss the project"}
           </button>
           <span className={`lead-status ${status}`}>
-            {status === "sent" && "Request stored. I will review it before replying."}
+            {status === "sent" && "Request received. We will review it and reply shortly."}
             {status === "local" && "Saved in this browser for local preview. Deploy to PHP to store server-side."}
             {status === "error" && "Could not store the request. Email is still available below."}
           </span>

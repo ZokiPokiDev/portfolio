@@ -18,7 +18,7 @@ export const fallbackFeedItems = [
     content_type: "post",
     fallback_only: true,
     title: "Business digitalization offer",
-    text: "A concise campaign entry point for modernization, integrations, and AI adoption.",
+    text: "A concise entry point for modernization, integrations, and AI adoption.",
     href: "https://linkedin.com/in/zoranpanev",
   },
   {

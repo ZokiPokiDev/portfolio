@@ -1,6 +1,13 @@
 const Contact = () => (
   <section id="contact" className="contact">
-    <h2>Contact</h2>
+    <h2>Start a conversation</h2>
+    <p>
+      If you are evaluating a modernization project, need senior engineering capacity, have a SaaS product
+      that is stuck near delivery, or want to validate an AI workflow, send a short description of the
+      current situation. Available for focused B2B projects, contract engineering support, and
+      longer-term technical collaboration.
+    </p>
+    <br />
 
     {/* <h3>CEO: Ana Ristevska</h3>
       <p>Mob: +389 78 391 978</p>
@@ -8,7 +15,7 @@ const Contact = () => (
       <h3>TUS fractional member: Michaela Dimovska</h3>
       <p>Mob: +1 425 472 8532</p>
       <br /> */}
-    <h3>CEO & CTO: Zoran Panev</h3>
+    <h3>Founder & Lead Engineer: Zoran Panev</h3>
     <p>Mob: +43 69 010 414 849</p>
     <br />
 

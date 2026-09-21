@@ -37,7 +37,6 @@ import viteLogo from '../assets/vite.svg';
 import nxLogo from '../assets/nx.svg';
 import reactivexLogo from '../assets/reactivex.svg';
 import hibernateLogo from '../assets/hibernate.svg';
-import toptalLogo from '../assets/toptal.svg';
 import oktaLogo from '../assets/okta.svg';
 import leafletLogo from '../assets/leaflet.svg';
 import jenkinsLogo from '../assets/jenkins.svg';
@@ -72,6 +71,20 @@ import opencodeLogo from '../assets/opencode.svg';
 import './TechStack.css';
 
 const groupedTechStack = {
+  "Core Stack": [
+    { name: 'TypeScript', logo: typescriptLogo },
+    { name: 'React', logo: reactLogo },
+    { name: 'Node.js', logo: nodejsLogo },
+    { name: 'NestJS', logo: nestjsLogo },
+    { name: 'FastAPI', logo: fastapiLogo },
+    { name: 'PostgreSQL', logo: postgresqlLogo },
+    { name: 'Docker', logo: dockerLogo },
+    { name: 'Kubernetes', logo: kubernetesLogo },
+    { name: 'GitHub', logo: githubLogo },
+    { name: 'GitLab', logo: gitlabLogo },
+    { name: 'OpenAI', logo: openaiLogo },
+    { name: 'LangChain', logo: langchainLogo },
+  ],
   "Full-Stack": [
     { name: 'JavaScript', logo: javascriptLogo },
     { name: 'TypeScript', logo: typescriptLogo },
@@ -100,7 +113,6 @@ const groupedTechStack = {
     { name: '.NET', logo: dotnetLogo },
     { name: 'Redux', logo: reduxLogo },
     { name: 'Strapi', logo: strapiLogo },
-    { name: 'Toptal', logo: toptalLogo },
     { name: 'CSS', logo: cssLogo },
     { name: 'Sass', logo: sassLogo },
     { name: 'Less', logo: lessLogo },
@@ -163,7 +175,7 @@ const TechStack = () => (
       <div>
         <p className="section-kicker">Stack and tooling</p>
         <h2 id="tech-stack-title">Tech Stack</h2>
-        <p>Tools I use across product engineering, infrastructure, security, and AI.</p>
+        <p>Core technologies used across product engineering, infrastructure, security, and AI delivery.</p>
       </div>
       <span className="tech-stack-count">{technologyCount} tools</span>
     </header>
@@ -171,7 +183,7 @@ const TechStack = () => (
     <div className="tech-stack-groups">
       {Object.entries(groupedTechStack).map(([group, technologies]) => (
         <article
-          className={`tech-stack-group ${group === 'Full-Stack' ? 'tech-stack-group-wide' : ''}`}
+          className={`tech-stack-group ${group === 'Full-Stack' || group === 'Core Stack' ? 'tech-stack-group-wide' : ''}`}
           key={group}
         >
           <div className="tech-stack-group-head">

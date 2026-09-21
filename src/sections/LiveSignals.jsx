@@ -26,7 +26,7 @@ const LiveSignals = () => {
       <div className="section-head live-signals-head">
         <div>
           <p className="section-kicker">Signals and featured work</p>
-          <h2>What I’m building and watching</h2>
+          <h2>What we're building and watching</h2>
           <p>
             Explore selected SystemPro services separately from recent engineering, social, and community updates.
           </p>

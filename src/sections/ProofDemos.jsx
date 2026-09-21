@@ -4,11 +4,11 @@ import { trackEvent } from "../hooks/useCampaignTracking";
 const ProofDemos = () => (
   <section id="proof-demos" className="campaign-section">
     <div className="section-head">
-      <p className="section-kicker">Proof concepts to publish next</p>
-      <h2>Two offers that can become demos, posts, and sales calls</h2>
+      <p className="section-kicker">Small Proofs of Value</p>
+      <h2>Two practical ways to validate value before a larger engagement</h2>
       <p>
-        These are intentionally small. They give social visitors something concrete to understand
-        and give prospects a low-risk reason to start a conversation.
+        These focused proof concepts are designed to validate the workflow, technical approach, and
+        business value before committing to a broader implementation.
       </p>
     </div>
 

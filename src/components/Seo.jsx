@@ -87,11 +87,11 @@ const Seo = ({
 // SEO metadata configurations for different route types
 export const seoConfig = {
   homepage: {
-    title: 'AI Integration & Software Modernization Company | SystemPro Tech',
-    description: 'Modernize legacy software, automate business workflows, and implement secure AI and RAG solutions with an experienced European engineering partner.',
+    title: 'Senior Software Engineering, Modernization & AI Integration | SystemPro Tech',
+    description: 'Founder-led B2B software engineering consultancy for application modernization, SaaS rescue work, APIs and integrations, cloud delivery, and practical AI/RAG implementation.',
     canonical: 'https://www.system-pro.tech/',
-    ogTitle: 'AI Integration & Software Modernization | SystemPro Tech',
-    ogDescription: 'Digitalization, workflow automation, system integrations, and practical AI adoption for business operations.',
+    ogTitle: 'Senior Software Engineering, Modernization & AI Integration | SystemPro Tech',
+    ogDescription: 'Founder-led consultancy for modernization, SaaS rescue, APIs, cloud delivery, and practical AI/RAG integration.',
     ogUrl: 'https://www.system-pro.tech/',
     ogImage: 'https://www.system-pro.tech/assets/javenit-favicon-s8W2CkgX.jpeg',
   },
@@ -185,11 +185,11 @@ export const seoConfig = {
   // Proof and authority pages
   proof: {
     founder: {
-      title: 'Zoran Panev - Founder & CEO | SystemPro Tech',
-      description: 'Zoran Panev is the founder and CEO of SystemPro Tech, with over 20 years of experience in software engineering, AI integration, and digital transformation.',
+      title: 'Zoran Panev - Founder & Lead Engineer | SystemPro Tech',
+      description: 'Zoran Panev is the founder and lead engineer of SystemPro Tech, a founder-led software engineering and AI consultancy with more than 15 years of hands-on software delivery.',
       canonical: 'https://www.system-pro.tech/founder',
-      ogTitle: 'Zoran Panev - Founder & CEO | SystemPro Tech',
-      ogDescription: 'Experienced software engineer and AI specialist helping European businesses modernize their digital platforms.',
+      ogTitle: 'Zoran Panev - Founder & Lead Engineer | SystemPro Tech',
+      ogDescription: 'Founder-led software engineering and AI consultancy. Full-stack product engineering, modernization, APIs, cloud delivery, and practical AI integration.',
       ogUrl: 'https://www.system-pro.tech/founder',
     },
     'case-studies': {

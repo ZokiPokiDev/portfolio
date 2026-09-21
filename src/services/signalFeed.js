@@ -55,7 +55,7 @@ export function normalizeFeedItem(item = {}) {
   return {
     source: item.source || "Signal",
     title: item.title || "Current update",
-    text: item.text || item.summary || "Latest public activity and campaign signal.",
+    text: item.text || item.summary || "Latest public activity and engineering updates.",
     href,
     published_at: item.published_at || null,
     kind: item.kind || "manual",

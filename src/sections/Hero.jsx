@@ -99,14 +99,14 @@ const Hero = () => {
           href="#lead-capture"
           onClick={() => trackEvent("cta_click", { target: "lead-capture", placement: "hero" })}
         >
-          Start modernization
+          Discuss a project
         </a>
         <a
           className="hero-cta secondary"
           href="#projects"
           onClick={() => trackEvent("cta_click", { target: "projects", placement: "hero" })}
         >
-          Review proof of work
+          View selected work
         </a>
       </div>
 

@@ -4,11 +4,11 @@ import { trackEvent } from "../hooks/useCampaignTracking";
 const ServicePackages = () => (
   <section id="packages" className="campaign-section">
     <div className="section-head">
-      <p className="section-kicker">Simple first engagement</p>
+      <p className="section-kicker">Start with a controlled scope</p>
       <h2>Start with a controlled scope</h2>
       <p>
-        The goal is to make the first collaboration easy to approve: one audit, one rescue sprint,
-        or one AI pilot before expanding into a larger delivery roadmap.
+        Begin with one audit, rescue sprint, or AI pilot. The first engagement is designed to create
+        useful technical output quickly and establish a clear basis for the next delivery phase.
       </p>
     </div>
 
